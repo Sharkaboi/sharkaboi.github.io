@@ -1,0 +1,33 @@
+:root {
+    /* Global colors */
+    --light-bg: #f5f5f5;
+    --dark-bg: #0C0C0C;
+
+    --hypelink-color: ##49AAAA;
+
+    /* Homepage colors */
+    --text-home-light-bg: #F5F5F5;
+    --text-home-dark-bg: #2B2B2B;
+    --icon-home-light-bg: #F5F5F5;
+    --icon-home-dark-bg: #2B2B2B;
+
+    /* Other pages colors */
+    --text-default-light-bg: #9F9F9F;
+    --text-default-dark-bg: #707070;
+    --icon-default-light-bg: #F5F5F5;
+    --icon-default-dark-bg: #707070;
+    --card-light-bg: #E4E4E4;
+    --card-dark-bg: #2B2B2B;
+    --btn-light-bg: #707070;
+    --btn-dark-bg: #9F9F9F;
+    --navbar-light-bg: #EEEEEE;
+    --navbar-dark-bg: #111111;
+
+    /* Specific colors */
+    --chevron-light-bg: #E4E4E4;
+    --chevron-dark-bg: #2B2B2B;
+
+    /* Code styling */
+    --code-light-bg: #EEEEEE;
+    --code-dark-bg: #2B2B2B;
+}
