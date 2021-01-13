@@ -1,20 +1,18 @@
 ---
-layout: default
+layout: page
 title: "404: Page not found"
 permalink: /404.html
-
-redirect_from: 
-  - /norobots/
-  - /assets/
-  - /tabs/
-  - /categories/
-  - /tags/
-  - /posts/
-
-dynamic_title: true
 ---
-
-<div class="lead">
-  <p>Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. </p>
-  <p><a href="{{ site.baseurl }}/">Head back Home</a> to try finding it again.</p>
+<script>
+  var darkThemeSelected = (localStorage.getItem('themeOption') !== null && localStorage.getItem('themeOption') === 'dark');
+  if (darkThemeSelected) {
+    document.body.classList.toggle('dark')
+  }
+</script>
+<div class="center-page">
+  <p>
+    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <br>
+    Sorry, you're in some place that doesn't exist. <br>
+    <a href="{{ site.baseurl }}">Head back Home by clicking here</a>.
+  </p>
 </div>

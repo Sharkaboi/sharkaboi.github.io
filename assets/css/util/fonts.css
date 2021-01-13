@@ -1,0 +1,36 @@
+@font-face {
+    font-family: "Barlow-Black";
+    src: url("../../fonts/BarlowSemiCondensed-Black.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Barlow-Bold";
+    src: url("../../fonts/BarlowSemiCondensed-Bold.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Barlow-ExtraBold";
+    src: url("../../fonts/BarlowSemiCondensed-ExtraBold.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Barlow-ExtraLight";
+    src: url("../../fonts/BarlowSemiCondensed-ExtraLight.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Barlow-Light";
+    src: url("../../fonts/BarlowSemiCondensed-Light.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Barlow-Medium";
+    src: url("../../fonts/BarlowSemiCondensed-Medium.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Barlow-Regular";
+    src: url("../../fonts/BarlowSemiCondensed-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Barlow-SemiBold";
+    src: url("../../fonts/BarlowSemiCondensed-SemiBold.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Barlow-Thin";
+    src: url("../../fonts/BarlowSemiCondensed-Thin.ttf") format("truetype");
+}

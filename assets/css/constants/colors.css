@@ -3,7 +3,7 @@
     --light-bg: #f5f5f5;
     --dark-bg: #0C0C0C;
 
-    --hypelink-color: ##49AAAA;
+    --hyperlink-color: ##49AAAA;
 
     /* Homepage colors */
     --text-home-light-bg: #F5F5F5;
@@ -30,4 +30,8 @@
     /* Code styling */
     --code-light-bg: #EEEEEE;
     --code-dark-bg: #2B2B2B;
+
+    /* Logo colors */
+    --logo-green: #11FF00;
+    --logo-blue: #00CBFF;
 }
