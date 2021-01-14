@@ -13,8 +13,8 @@
 body,html {
     margin: 0;
     padding: 0;
-    color: var(--text-default-dark-bg);
-    background-color: var(--light-bg);
+    color: var(--text-color);
+    background-color: var(--bg);
 }
 
 a {

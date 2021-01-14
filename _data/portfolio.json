@@ -1,0 +1,52 @@
+{
+    "about": "I'm an avid learner who is keen on having a career in Android Development. \nAlso interested in tech and PC hardware. \nCurrently doing Undergrad degree in Cochin University of Science and Technology.\nSpare time hobbies include watching anime or browsing forums.",
+    "post": "Android developer",
+    "skills": [
+        "Kotlin Android Development",
+        "Android libraries (Retrofit, Room, Firebase SDK, Hilt, Coroutines)",
+        "Software architecture (MVVM, MVI)",
+        "PhotoShop, Sony Vegas, Adobe Xd",
+        "Flutter development",
+        "Basic web development",
+        "Git workflow"
+    ],
+    "experience": [
+        {
+            "title": "Android Intern",
+            "company": "Stylabs",
+            "from": "Nov 2020",
+            "to": "Present",
+            "description": "Working on Collabb Android app, Home360 Flutter app.",
+            "link": "https://stylabs.in/"
+        },
+        {
+            "title": "Android Facilitator",
+            "company": "DSC CUSAT",
+            "from": "Nov 2020",
+            "to": "Present",
+            "description": "Facilitated on Android StudyJams event by Google. Taught Students to make Android apps using Kotlin.",
+            "link": "https://github.com/DSCCUSAT/Android-Study-Jams-Resources"
+        }
+    ],
+    "cv_link": "https://bit.ly/3eTwHtS",
+    "mail_link": "mailto:sarathsedu@gmail.com",
+    "projects": [
+        {
+            "name":"Link Manager",
+            "description":"An app to keep track of all your links.",
+            "tech_stack":[
+                "MVVM Concepts", 
+                "Room", 
+                "Coroutines", 
+                "MDC Library",
+                "Jetpack libraries"
+            ],
+            "status":"completed",
+            "icon_url":"https://raw.githubusercontent.com/Sharkaboi/LinkManager/master/app/src/main/ic_launcher-playstore.png",
+            "banner_url":"https://raw.githubusercontent.com/Sharkaboi/LinkManager/master/app/src/main/ic_launcher-playstore.png",
+            "showcase_url":"https://i.imgur.com/ljlpUTR.png",
+            "github_link":"https://github.com/Sharkaboi/LinkManager",
+            "release_link":"https://github.com/Sharkaboi/LinkManager/releases"
+        }
+    ]
+}

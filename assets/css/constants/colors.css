@@ -1,37 +1,40 @@
-:root {
-    /* Global colors */
-    --light-bg: #f5f5f5;
-    --dark-bg: #0C0C0C;
+body {
+    
+    /* light mode colors */
+    --bg: #F5F5F5;
+    --text-color: #707070;
+    --chevron-color: #E4E4E4;
+    --icon-color: #707070;
+    --card-color: #E4E4E4;
+    --btn-color:#707070;
+    --navbar-color:#EEEEEE;
 
-    --hyperlink-color: ##49AAAA;
-
-    /* Homepage colors */
-    --text-home-light-bg: #F5F5F5;
-    --text-home-dark-bg: #2B2B2B;
-    --icon-home-light-bg: #F5F5F5;
-    --icon-home-dark-bg: #2B2B2B;
-
-    /* Other pages colors */
-    --text-default-light-bg: #9F9F9F;
-    --text-default-dark-bg: #707070;
-    --icon-default-light-bg: #F5F5F5;
-    --icon-default-dark-bg: #707070;
-    --card-light-bg: #E4E4E4;
-    --card-dark-bg: #2B2B2B;
-    --btn-light-bg: #707070;
-    --btn-dark-bg: #9F9F9F;
-    --navbar-light-bg: #EEEEEE;
-    --navbar-dark-bg: #111111;
+    --home-text-color:#2B2B2B;
+    --home-icon-color: #2B2B2B;
 
     /* Specific colors */
-    --chevron-light-bg: #E4E4E4;
-    --chevron-dark-bg: #2B2B2B;
 
     /* Code styling */
     --code-light-bg: #EEEEEE;
     --code-dark-bg: #2B2B2B;
+    --hyperlink-color: #49AAAA;
 
     /* Logo colors */
     --logo-green: #11FF00;
     --logo-blue: #00CBFF;
+}
+
+body.dark {
+
+    /* dark mode colors*/
+    --bg: #0C0C0C;
+    --text-color: #9F9F9F;
+    --chevron-color: #2B2B2B;
+    --icon-color: #9F9F9F;
+    --card-color: #2B2B2B;
+    --btn-color:#9F9F9F;
+    --navbar-color:#111111;
+
+    --home-text-color: #F5F5F5;
+    --home-icon-color: #F5F5F5;
 }

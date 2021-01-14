@@ -1,12 +1,6 @@
 body{
-    color: var(--text-home-dark-bg);
-    background-color: var(--light-bg);
+    color: var(--home-text-color);
 	height: 100vh;
-}
-
-body.dark{
-    color: var(--text-home-light-bg);
-    background-color: var(--dark-bg);
 }
 
 .center-contents {

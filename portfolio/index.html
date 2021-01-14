@@ -1,12 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% include favicons.html %}
-    <title>Portfolio</title>
-</head>
-<body>
-    
-</body>
-</html>
+---
+title: Sarath's Portfolio
+layout: portfolio
+---
+{% include theme-option.html %}
+<div class="header">
+    <div class="header-row">
+        <div class="title-section">
+            <p class="name">I'm Sarath S.</p>
+            <p class="post">{{ site.data.portfolio.post }}</p>
+        </div>
+        <div class="contact-button-group">
+            <p>
+                <a href="{{ site.data.portfolio.cv_link }}" target="_blank"><button class="colored my-1">Get
+                        CV</button></a><br>
+                <a href="#contact"></a><button class="outlined my-1">Hire me</button></a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="about-skills-row">
+        <div class="about-column">
+            <h3>About</h3>
+            <p>{{ site.data.portfolio.about }}</p>
+        </div>
+        <div class="skills-column">
+            <h3>Skills</h3>
+            <p>
+                {% for skill in site.data.portfolio.skills %}
+                - {{skill}} <br>
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+    <div class="experience-row">
+        <h3>Experience</h3>
+        <div class="experience-carousel js-flickity" data-flickity-options='{ "cellAlign": "center", "contain": true, "pageDots": false }'>
+            {% for experience in site.data.portfolio.experience %}
+                <div class="experience-card">
+                    <span class="experience-title">{{ experience.title }}</span> - 
+                    <span class="experience-company">{{ experience.company  }}</span>
+                    <a href="{{ experience.link }}" target="_blank"><i class="fas fa-external-link-alt fa-xs"></i></a>
+                    <br>
+                    <p class="experience-interval">{{ experience.from }} - {{ experience.to }}</p><br>
+                    <p class="experience-body">{{ experience.description }}</p>
+                </div>
+            {% endfor %}    
+        </div>
+    </div>
+    <div class="projects-row">
+        <h3>Projects <i class="fas fa-external-link-alt fa-xs"></i></h3>
+        <div class="projects-carousel">
+
+        </div>
+    </div>
+</div>
+
+<div class="footer" id="contact">
+    <div class="footer-row">
+        <div class="contact-column">
+            
+        </div>
+        <div class="links-column">
+
+        </div>
+    </div>
+</div>
