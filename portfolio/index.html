@@ -13,7 +13,8 @@ layout: portfolio
             <p>
                 <a href="{{ site.data.portfolio.cv_link }}" target="_blank"><button class="colored my-1">Get
                         CV</button></a><br>
-                <a href="{{ site.data.socials.email }}"><button class="outlined my-1">Hire me</button></a>
+                <a href="{{ site.data.socials.email }}" target="_blank"><button class="outlined my-1">Hire
+                        me</button></a>
             </p>
         </div>
     </div>
@@ -36,45 +37,49 @@ layout: portfolio
     </div>
     <div class="experience-row">
         <h3>Experience</h3>
-        <div class="experience-carousel js-flickity" data-flickity-options='{ "cellAlign": "center", "contain": true, "pageDots": false }'>
+        <div class="experience-carousel js-flickity"
+            data-flickity-options='{ "cellAlign": "center", "contain": true, "pageDots": false }'>
             {% for experience in site.data.portfolio.experience %}
-                <div class="experience-card">
-                    <span class="experience-title">{{ experience.title }}</span> - 
-                    <span class="experience-company">{{ experience.company  }}</span>
-                    <a href="{{ experience.link }}" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-                    <br>
-                    <p class="experience-interval">{{ experience.from }} - {{ experience.to }}</p>
-                    <p class="experience-body">{{ experience.description }}</p>
-                </div>
-            {% endfor %}    
+            <div class="experience-card">
+                <span class="experience-title">{{ experience.title }}</span> -
+                <span class="experience-company">{{ experience.company  }}</span>
+                <a href="{{ experience.link }}" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                <br>
+                <p class="experience-interval">{{ experience.from }} - {{ experience.to }}</p>
+                <p class="experience-body">{{ experience.description }}</p>
+            </div>
+            {% endfor %}
         </div>
     </div>
     <div class="projects-row">
-        <h3>Projects 
-            <a href="/projects"><i class="fas fa-external-link-alt pl-1 fa-xs"></i></a>
+        <h3>Projects
+            <a href="/projects" target="_blank"><i class="fas fa-external-link-alt pl-1 fa-xs"></i></a>
         </h3>
-        <div class="projects-carousel js-flickity" data-flickity-options='{ "cellAlign": "left", "contain": true, "pageDots": false }'>
+        <div class="projects-carousel js-flickity"
+            data-flickity-options='{ "cellAlign": "left", "contain": true, "pageDots": false }'>
             {% for project in site.data.portfolio.projects %}
-                <div class="project-card">
-                    <span class="project-name">
-                        {{ project.name }}
-                        
-                    </span> 
-                    <p class="project-description">{{ project.description }}</p>
-                    <p class="tech-stack">Uses 
-                        {% for techStack in project.tech_stack %}
-                            {% if techStack == project.tech_stack.last %}
-                                {{ techStack }}. 
-                            {% else %}
-                                {{ techStack }}, 
-                            {% endif %}
-                        {% endfor %}
-                    </p>
-                    <p class="project-button-group">
-                        <a href="{{ project.github_link }}" target="_blank"><button class="github-button mr-1">Github</button></a>
-                        <a href="{{ project.release_link }}" target="_blank"><button class="releases-button">Releases</button></a>
-                    </p>
-                </div>
+            <div class="project-card">
+                <span class="project-name">
+                    {{ project.name }}
+
+                </span>
+                <p class="project-description">{{ project.description }}</p>
+                <p class="tech-stack">Uses
+                    {% for techStack in project.tech_stack %}
+                    {% if techStack == project.tech_stack.last %}
+                    {{ techStack }}.
+                    {% else %}
+                    {{ techStack }},
+                    {% endif %}
+                    {% endfor %}
+                </p>
+                <p class="project-button-group">
+                    <a href="{{ project.github_link }}" target="_blank"><button
+                            class="github-button mr-1">Github</button></a>
+                    <a href="{{ project.release_link }}" target="_blank"><button
+                            class="releases-button">Releases</button></a>
+                </p>
+            </div>
             {% endfor %}
         </div>
     </div>
@@ -83,13 +88,20 @@ layout: portfolio
 <div class="footer" id="contact">
     <div class="footer-row">
         <div class="links-column">
-            <a class="p-1 link" href="{{ site.data.socials.email }}"><i class="fa fa-envelope-open  p-1" aria-hidden="true"></i></a>
-            <a class="p-1 link" href="{{ site.data.socials.github }}"><i class="fab fa-github p-1" aria-hidden="true"></i></a>
-            <a class="p-1 link" href="{{ site.data.socials.linkedin }}"><i class="fab fa-linkedin p-1" aria-hidden="true"></i></a>
-            <a class="p-1 link" href="{{ site.data.socials.twitter }}"><i class="fab fa-twitter p-1" aria-hidden="true"></i></a>
-            <a class="p-1 link" href="{{ site.data.socials.twitch }}"><i class="fab fa-twitch p-1" aria-hidden="true"></i></a>
-            <a class="p-1 link" href="{{ site.data.socials.ig }}"><i class="fab fa-instagram p-1" aria-hidden="true"></i></a>
-            <a class="p-1 link" href="{{ site.data.socials.medium }}"><i class="fab fa-medium p-1" aria-hidden="true"></i></a>
+            <a class="p-1 link" href="{{ site.data.socials.email }}" target="_blank"><i class="fa fa-envelope-open  p-1"
+                    aria-hidden="true"></i></a>
+            <a class="p-1 link" href="{{ site.data.socials.github }}" target="_blank"><i class="fab fa-github p-1"
+                    aria-hidden="true"></i></a>
+            <a class="p-1 link" href="{{ site.data.socials.linkedin }}" target="_blank"><i class="fab fa-linkedin p-1"
+                    aria-hidden="true"></i></a>
+            <a class="p-1 link" href="{{ site.data.socials.twitter }}" target="_blank"><i class="fab fa-twitter p-1"
+                    aria-hidden="true"></i></a>
+            <a class="p-1 link" href="{{ site.data.socials.twitch }}" target="_blank"><i class="fab fa-twitch p-1"
+                    aria-hidden="true"></i></a>
+            <a class="p-1 link" href="{{ site.data.socials.ig }}" target="_blank"><i class="fab fa-instagram p-1"
+                    aria-hidden="true"></i></a>
+            <a class="p-1 link" href="{{ site.data.socials.medium }}" target="_blank"><i class="fab fa-medium p-1"
+                    aria-hidden="true"></i></a>
         </div>
         <div class="copyright">
             <p id="footerCopyrightYear"></p>
@@ -100,6 +112,5 @@ layout: portfolio
 <script>
     var footerText = document.getElementById('footerCopyrightYear')
     var currentDate = new Date().getFullYear()
-    footerText.innerHTML = "&copy; 2020 - "+currentDate+" Sarath S"
+    footerText.innerHTML = "&copy; 2020 - " + currentDate + " Sarath S"
 </script>
-
