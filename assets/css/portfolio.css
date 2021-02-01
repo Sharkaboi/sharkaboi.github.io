@@ -1,3 +1,4 @@
+/* Mobile design */
 .header{
     display: grid;
     align-items: center;
@@ -178,125 +179,206 @@ h3 {
     display: none;
 }
 
-
-
-  
-/* Desktop styles */
-@media screen and (min-width: 1200px){
-    .header{
-        display: grid;
-        align-items: center;
-        justify-items: center;
-        padding: 2rem;
-        background-color: var(--card-color);
-    }
+/* Small tablets and phones in landscape */
+@media screen and (min-width: 641px){
     
     .header-row{
-        display: grid;
-        grid-template-columns: 3fr 1fr;
-        width: 70%;
-    }
-    
-    .contact-button-group{
-        display: grid;
-        align-items: center;
-        justify-items: center;
+        margin-top: 1rem;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
     }
     
     .name {
-        font-size: 8rem;
-        font-family: Barlow-Bold;
+        margin: 0px;
+        font-size: 3.5rem;
     }
-    
+       
     .post {
-        font-size: 2rem;
-        font-family: Barlow-Light;
+        font-size: 2.5rem;
+    }
+
+    .contact-button-group{
+        padding: 0px;
     }
     
     .colored {
-        border-radius: 16px;
-        padding: 1rem;
-        width: 14rem;
-        border: none;
-        padding: none;
-        font-size: 2rem;
-        text-align: center;
-        font-family: Barlow-Bold;
-        color: var(--card-color);
-        background-color: var(--btn-color);
+        width: 250px;
+        font-size: 2.5rem;
     }
     
     .outlined {
-        border-radius: 16px;
-        padding: 1rem;
-        width: 14rem;
-        border: none;
-        padding: none;
-        font-size: 2rem;
-        text-align: center;
-        font-family: Barlow-Bold;
-        background-color: transparent;
-        color: var(--text-color);
-        border: 1px solid var(--btn-color);
+        width: 250px;
+        font-size: 2.5rem;
     }
     
-    .about-skills-row {
-        display: grid;
-        grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    .about-skills-row{
         width: 100%;
-        column-gap: 1rem;
-        padding-top: 3rem;
+        margin-top: 1.5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 20px;
     }
-    
+
     .about-column {
         padding: 1rem;
-    }
-    
-    h3 {
-        font-size: 1.5rem;
-        font-family: Barlow-Medium;
     }
     
     .skills-column {
         padding: 1rem;
     }
     
+    .experience-carousel{
+        width: 100%;
+    }
+
     .experience-card {
-        background-color: var(--card-color);
-        border-radius: 8px;
-        padding: 1rem;
-        margin: 0.5rem;
-        width: 400px;
-        height: 200px;
+        width: 50%;
     }
     
-    .experience-card.is-selected{
-        transform: scale(1.05);
-        box-shadow: 1px 1px 1px 1px var(--text-color);
+    .experience-title {
+        font-size: 1.3rem;
+    }
+
+    .experience-interval {
+        font-size: 0.9rem;
     }
     
-    .project-card{
-        background-color: var(--card-color);
-        border-radius: 8px;
-        padding: 1rem;
-        margin: 0.5rem;
-        width: 400px;
-        height: 200px;
+    .projects-carousel{
+        padding-bottom: 1rem;
+        width: 100%;
+    }
+
+    .project-card {
+        width: 50%;
     }
     
-    .project-card.is-selected{
-        transform: scale(1.05);
-        box-shadow: 1px 1px 1px 1px var(--text-color);
+    .project-name{
+        font-size: 1.3rem;
+    }
+
+    .project-description{
+        font-size: 1.1rem;
+    }
+    
+    .tech-stack{
+        font-size: 1rem;
+    }
+    
+    .github-button{
+        font-size: 1.3rem;
+    }
+    
+    .releases-button{
+        font-size: 1.3rem;
+    }
+    
+    .footer-row {
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        grid-template-rows: 1fr 3rem;
+        width: 100%;
+    }
+    
+    .links-column {
+        grid-template-columns: repeat(7, 1fr);
+    }
+    
+    .link:nth-child(1), .link:nth-child(2), .link:nth-child(3), .link:nth-child(4) {
+        grid-column: span 1;
+    }
+    
+    .link:nth-child(4) ~ .link {
+        grid-column: span 1;
     }
 }
 
 /* large tablets and laptops */
 @media screen and (min-width: 960px){
+    
+    .name {
+        font-size: 4rem;
+    }
+       
+    .post {
+        font-size: 3rem;
+    }
+    
+    .colored {
+        font-size: 3rem;
+    }
+    
+    .outlined {
+        font-size: 3rem;
+    }
 
+    .experience-card {
+        width: 33%;
+    }
+
+    .project-card {
+        width: 33%;
+    }
+    
+    .footer{
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        width: 100%;
+    }
+    .footer-row {
+        width: 50%;
+    }
 }
+  
+/* Desktop styles */
+@media screen and (min-width: 1200px){
+    
+    .container-fluid {
+        width: 100%;
+        display: grid;
+        justify-items: center;
+    }
 
+    .name {
+        font-size: 5rem;
+    }
+       
+    .post {
+        font-size: 4rem;
+    }
 
+    .about-skills-row{
+        width: 80%;
+        display: grid;
+        justify-items: center;
+    }
 
-@media screen and (min-width: 620px){
+    .about-column{
+        width: 80%;
+    }
 
+    .skills-column{
+        width: 80%;
+    }
+
+    .experience-row {
+        width: 80%;
+    }
+
+    .experience-card {
+        width: 25%;
+    }
+
+    .projects-row {
+        width: 80%;
+    }
+
+    .project-card {
+        width: 25%;
+    }
+    
+    .footer-row {
+        width: 40%;
+    }
 }
