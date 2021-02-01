@@ -1,0 +1,72 @@
+.header{
+    background-color: var(--card-color);
+}
+
+.header-row{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    height: 5rem;
+}
+
+.header-title {
+    font-size: 1.5rem;
+    font-family: Barlow-Bold;
+}
+
+.projects{
+    padding-top: 1rem;
+}
+
+.project-card{
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: var(--card-color);
+    margin: 20px 0px;
+}
+
+.showcase {
+}
+
+.image{
+    width: 100%;
+    height: 100%;
+}
+
+.project-details{
+    padding: 1rem;
+}
+
+.project-name{
+    font-size: 2rem;
+    margin-bottom: 5px;
+    font-family: Barlow-Medium;
+    color: var(--hyperlink-color);
+    text-decoration: underline;
+}
+
+.project-description {
+    font-size: 1.2rem;
+}
+
+.tech-stack {
+}
+
+.releases-button {
+    border-radius: 4px;
+    padding: 5px 10px;
+    border: none;
+    padding: none;
+    text-align: center;
+    font-family: Barlow-SemiBold;
+    color: var(--card-color);
+    background-color: var(--btn-color);
+}
+
+.footer {
+    background-color: var(--card-color);
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    padding: 1rem;
+}

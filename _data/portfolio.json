@@ -44,9 +44,158 @@
             "status":"completed",
             "icon_url":"https://raw.githubusercontent.com/Sharkaboi/LinkManager/master/app/src/main/ic_launcher-playstore.png",
             "banner_url":"https://raw.githubusercontent.com/Sharkaboi/LinkManager/master/app/src/main/ic_launcher-playstore.png",
-            "showcase_url":"https://i.imgur.com/ljlpUTR.png",
+            "showcase_url":"../assets/images/project-showcases/link-manager.png",
             "github_link":"https://github.com/Sharkaboi/LinkManager",
             "release_link":"https://github.com/Sharkaboi/LinkManager/releases"
+        },
+        {
+            "name":"Drawings Manager",
+            "description":"An app to and and manage floor plan drawings with markers.",
+            "tech_stack":[
+                "MVVM Concepts", 
+                "Room", 
+                "Coroutines",
+                "Hilt", 
+                "ViewBinding", 
+                "Coil",
+                "MDC Library",
+                "Jetpack libraries"
+            ],
+            "status":"completed",
+            "icon_url":"https://raw.githubusercontent.com/Sharkaboi/DrawingsApp/master/app/src/main/ic_launcher-playstore.png",
+            "banner_url":"https://raw.githubusercontent.com/Sharkaboi/DrawingsApp/master/app/src/main/ic_launcher-playstore.png",
+            "showcase_url":"../assets/images/project-showcases/drawings-manager.png",
+            "github_link":"https://github.com/Sharkaboi/DrawingsApp",
+            "release_link":"https://github.com/Sharkaboi/DrawingsApp/releases"
+        },
+        {
+            "name":"Jokes",
+            "description":"Displays random jokes and can save them. \nMade for teaching students during AndroidStudyJams event.",
+            "tech_stack":[
+                "MVVM Concepts", 
+                "Room", 
+                "Coroutines", 
+                "Retrofit",
+                "Hilt", 
+                "ViewBinding",
+                "Jetpack libraries"
+            ],
+            "status":"completed",
+            "icon_url":"https://raw.githubusercontent.com/Sharkaboi/Jokes/master/app/src/main/ic_launcher-playstore.png",
+            "banner_url":"https://raw.githubusercontent.com/Sharkaboi/Jokes/master/app/src/main/ic_launcher-playstore.png",
+            "showcase_url":"../assets/images/project-showcases/jokes.png",
+            "github_link":"https://github.com/Sharkaboi/Jokes",
+            "release_link":"https://github.com/Sharkaboi/Jokes/releases"
+        },
+        {
+            "name":"Attendance Manager",
+            "description":"An app to keep track of attendance for you. Uses Room and Firebase for backup.",
+            "tech_stack":[
+                "MVVM Concepts", 
+                "Room", 
+                "Coroutines",
+                "Hilt", 
+                "ViewBinding",
+                "Work Manager", 
+                "MDC Library",
+                "Jetpack libraries"
+            ],
+            "status":"ongoing",
+            "icon_url":"https://raw.githubusercontent.com/Sharkaboi/AttendanceManager/master/app/src/main/ic_launcher-playstore.png",
+            "banner_url":"https://raw.githubusercontent.com/Sharkaboi/AttendanceManager/master/app/src/main/ic_launcher-playstore.png",
+            "showcase_url":"../assets/images/project-showcases/attendance-manager.png",
+            "github_link":"https://github.com/Sharkaboi/AttendanceManager",
+            "release_link":"https://github.com/Sharkaboi/AttendanceManager/releases"
+        },
+        {
+            "name":"MediaHub",
+            "description":"An all in one manager for Movies,Series,Anime and manga. ",
+            "tech_stack":[
+                "MVI Concepts",
+                "Room", 
+                "Coroutines", 
+                "Work Manager",
+                "Retrofit",
+                "OAuth2",
+                "Hilt", 
+                "ViewBinding", 
+                "Jetpack libraries"
+            ],
+            "status":"ongoing",
+            "icon_url":"https://raw.githubusercontent.com/Sharkaboi/MediaHub/master/app/src/main/ic_launcher-playstore.png",
+            "banner_url":"https://raw.githubusercontent.com/Sharkaboi/MediaHub/master/app/src/main/ic_launcher-playstore.png",
+            "showcase_url":"",
+            "github_link":"https://github.com/Sharkaboi/MediaHub",
+            "release_link":"https://github.com/Sharkaboi/MediaHub/releases"
+        },
+        {
+            "name":"Birthday Remainder",
+            "description":"An app to maintain and notify Birthdays and other yearly events.",
+            "tech_stack":[
+                "MVVM Concepts", 
+                "Room", 
+                "Coroutines", 
+                "Work Manager",
+                "Hilt", 
+                "ViewBinding", 
+                "MDC Library",
+                "Jetpack libraries"
+            ],
+            "status":"completed",
+            "icon_url":"https://raw.githubusercontent.com/Sharkaboi/Birthday_Remainder/master/app/src/main/ic_launcher-playstore.png",
+            "banner_url":"https://raw.githubusercontent.com/Sharkaboi/Birthday_Remainder/master/app/src/main/ic_launcher-playstore.png",
+            "showcase_url":"",
+            "github_link":"https://github.com/Sharkaboi/Birthday_Remainder",
+            "release_link":"https://github.com/Sharkaboi/Birthday_Remainder/releases"
+        },
+        {
+            "name":"FoodFlix",
+            "description":"Food ordering app made for Internshala Course Final Project.",
+            "tech_stack":[
+                "Room", 
+                "Volley", 
+                "Async Tasks"
+            ],
+            "status":"completed",
+            "icon_url":"https://raw.githubusercontent.com/Sharkaboi/FoodFlix/master/app/src/main/ic_launcher-playstore.png",
+            "banner_url":"https://raw.githubusercontent.com/Sharkaboi/FoodFlix/master/app/src/main/ic_launcher-playstore.png",
+            "showcase_url":"../assets/images/project-showcases/foodflix.png",
+            "github_link":"https://github.com/Sharkaboi/FoodFlix",
+            "release_link":"https://github.com/Sharkaboi/FoodFlix/releases"
+        },
+        {
+            "name":"GradWay",
+            "description":"The All in One Solution For Graduation Students.",
+            "tech_stack":[
+                "MVVM Concepts", 
+                "Firebase auth", 
+                "Firestore", 
+                "Jetpack libraries"
+            ],
+            "status":"archived",
+            "icon_url":"https://raw.githubusercontent.com/Sharkaboi/GradWay/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+            "banner_url":"https://raw.githubusercontent.com/Sharkaboi/GradWay/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+            "showcase_url":"../assets/images/project-showcases/gradway.png",
+            "github_link":"https://github.com/Sharkaboi/GradWay",
+            "release_link":"https://github.com/Sharkaboi/GradWay/releases"
+        },
+        {
+            "name":"CashTrack",
+            "description":"A Web app to help manage your budget and expenses. University MiniProject.",
+            "tech_stack":[
+                "PHP", 
+                "MySQL", 
+                "HTML/CSS", 
+                "Bootstrap", 
+                "Google Charts JS",
+                "000webhost"
+            ],
+            "status":"completed",
+            "icon_url":"https://raw.githubusercontent.com/Sharkaboi/CashTrack/main/assets/logos/Logo2.png",
+            "banner_url":"https://raw.githubusercontent.com/Sharkaboi/CashTrack/main/assets/logos/Logo2.png",
+            "showcase_url":"../assets/images/project-showcases/cashtrack.png",
+            "github_link":"https://github.com/Sharkaboi/CashTrack",
+            "release_link":"https://cashtrk.000webhostapp.com/"
         }
     ]
 }
