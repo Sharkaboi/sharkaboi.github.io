@@ -169,12 +169,15 @@ h3 {
 .flickity-prev-next-button .arrow {
     fill: var(--text-color);
 }
+
 .flickity-prev-next-button.no-svg {
     color: var(--text-color);
 }
+
 .flickity-prev-next-button:hover {
     background: transparent;
 }
+
 .flickity-prev-next-button:disabled {
     display: none;
 }
@@ -271,7 +274,7 @@ h3 {
     .releases-button{
         font-size: 1.3rem;
     }
-    
+
     .footer-row {
         display: grid;
         align-items: center;
@@ -326,6 +329,7 @@ h3 {
         justify-items: center;
         width: 100%;
     }
+
     .footer-row {
         width: 50%;
     }
