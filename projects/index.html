@@ -14,30 +14,33 @@ layout: projects
 <div class="container-fluid">
     <div class="projects">
         {% for project in site.data.portfolio.projects %}
-        <div class="project-card">
-            <div class="showcase">
-                <img src="{{ project.showcase_url }}" alt="Showcase" class="image">
-            </div>
-            <div class="project-details">
-                <a href="{{ project.github_link }}" target="_blank">
-                    <span class="project-name">{{ project.name }}</span>
-                </a>
-                <p class="project-description">{{ project.description }}</p>
-                <p class="tech-stack">
-                    Uses
-                    {% for techStack in project.tech_stack %}
-                    {% if techStack == project.tech_stack.last %}
-                    {{ techStack }}.
-                    {% else %}
-                    {{ techStack }},
-                    {% endif %}
+            <div class="project-card">
+                <div class="showcase js-flickity"
+                    data-flickity-options='{ "fullscreen": true, "pageDots": false, "imagesLoaded": true }'>
+                    {% for showcase_image in project.showcase_url %}
+                        <img class="image" src="{{ showcase_image }}">
                     {% endfor %}
-                </p>
-                <a href="{{ project.release_link }}" target="_blank">
-                    <button class="releases-button">Releases</button>
-                </a>
+                </div>
+                <div class="project-details">
+                    <a href="{{ project.github_link }}" target="_blank">
+                        <span class="project-name">{{ project.name }}</span>
+                    </a>
+                    <p class="project-description">{{ project.description }}</p>
+                    <p class="tech-stack">
+                        Uses
+                        {% for techStack in project.tech_stack %}
+                        {% if techStack == project.tech_stack.last %}
+                        {{ techStack }}.
+                        {% else %}
+                        {{ techStack }},
+                        {% endif %}
+                        {% endfor %}
+                    </p>
+                    <a href="{{ project.release_link }}" target="_blank">
+                        <button class="releases-button">Releases</button>
+                    </a>
+                </div>
             </div>
-        </div>
         {% endfor %}
     </div>
 </div>
