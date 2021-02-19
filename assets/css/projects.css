@@ -7,11 +7,10 @@
     display: grid;
     align-items: center;
     justify-items: center;
-    height: 5rem;
 }
 
 .header-title {
-    font-size: 1.5rem;
+    font-size: 3rem;
     font-family: Barlow-Bold;
 }
 
@@ -104,6 +103,10 @@
 
 .flickity-prev-next-button:disabled {
     display: none;
+}
+
+.flickity-button:hover {
+    background: var(--bg);
 }
 
 /* small tablets and landscape phones*/
