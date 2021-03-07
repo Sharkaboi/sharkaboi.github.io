@@ -108,27 +108,6 @@
             "release_link": "https://github.com/Sharkaboi/AttendanceManager/releases"
         },
         {
-            "name": "MediaHub",
-            "description": "An all in one manager for Movies,Series,Anime and manga. ",
-            "tech_stack": [
-                "MVI Concepts",
-                "Room",
-                "Coroutines",
-                "Work Manager",
-                "Retrofit",
-                "OAuth2",
-                "Hilt",
-                "ViewBinding",
-                "Jetpack libraries"
-            ],
-            "status": "ongoing",
-            "icon_url": "https://raw.githubusercontent.com/Sharkaboi/MediaHub/master/app/src/main/ic_launcher-playstore.png",
-            "banner_url": "https://raw.githubusercontent.com/Sharkaboi/MediaHub/master/app/src/main/ic_launcher-playstore.png",
-            "showcase_url": [],
-            "github_link": "https://github.com/Sharkaboi/MediaHub",
-            "release_link": "https://github.com/Sharkaboi/MediaHub/releases"
-        },
-        {
             "name": "Birthday Remainder",
             "description": "An app to maintain and notify Birthdays and other yearly events.",
             "tech_stack": [
