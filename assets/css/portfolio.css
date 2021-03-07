@@ -1,0 +1,388 @@
+/* Mobile design */
+.header{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    padding: 32px;
+    background-color: var(--card-color);
+}
+
+.header-row{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.name {
+    font-size: 3rem;
+    margin-top: 3rem;
+    font-family: Barlow-Bold;
+}
+   
+.post {
+    font-size: 2rem;
+    font-family: Barlow-Light;
+}
+
+.colored {
+    border-radius: 16px;
+    padding: 10px;
+    width: 200px;
+    border: none;
+    padding: none;
+    font-size: 2rem;
+    text-align: center;
+    font-family: Barlow-Bold;
+    color: var(--card-color);
+    background-color: var(--btn-color);
+}
+
+.outlined {
+    border-radius: 16px;
+    padding: 10px;
+    width: 200px;
+    border: none;
+    padding: none;
+    font-size: 2rem;
+    text-align: center;
+    font-family: Barlow-Bold;
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--btn-color);
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-family: Barlow-Medium;
+}
+
+.about-column {
+    padding: 0.5rem;
+}
+
+.skills-column {
+    padding: 0.5rem;
+}
+
+.experience-card {
+    background-color: var(--card-color);
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+}
+
+.experience-title {
+    font-size: 1.1rem;
+    font-family: Barlow-Medium;
+}
+
+.experience-interval {
+    font-size: 0.8rem;
+    font-family: Barlow-Medium;
+}
+
+.experience-body {
+    font-size: 1.1rem;
+}
+
+.experience-company{
+    padding-right: 5px;
+}
+
+.project-card {
+    background-color: var(--card-color);
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+}
+
+.project-name{
+    font-size: 1.1rem;
+    font-family: Barlow-Medium;
+}
+
+.tech-stack{
+    font-size: 0.8rem;
+}
+
+.github-button{
+    border-radius: 8px;
+    padding: 5px 10px;
+    border: none;
+    padding: none;
+    text-align: center;
+    font-family: Barlow-Bold;
+    color: var(--card-color);
+    background-color: var(--btn-color);
+}
+
+.releases-button{
+    border-radius: 8px;
+    padding: 5px 10px;
+    border: none;
+    padding: none;
+    text-align: center;
+    font-family: Barlow-Medium;
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--btn-color);
+}
+
+.footer {
+    background-color: var(--card-color);
+}
+
+.footer-row {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-rows: 1fr 3rem;
+    width: 100%;
+}
+
+.links-column {
+    font-size: 3rem;
+    text-align: center;
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(12, 1fr);
+    justify-items: center;
+}
+
+.link:nth-child(1), .link:nth-child(2), .link:nth-child(3), .link:nth-child(4) {
+    grid-column: span 3;
+}
+
+.link:nth-child(4) ~ .link {
+    grid-column: span 4;
+}
+
+/* flickity customizations */
+.flickity-prev-next-button {
+    width: 32px;
+    height: 32px;
+    background: var(--bg);
+}
+
+.flickity-prev-next-button .arrow {
+    fill: var(--text-color);
+}
+
+.flickity-prev-next-button.no-svg {
+    color: var(--text-color);
+}
+
+.flickity-prev-next-button:hover {
+    background: transparent;
+}
+
+.flickity-prev-next-button:disabled {
+    display: none;
+}
+
+/* Small tablets and phones in landscape */
+@media screen and (min-width: 641px){
+    
+    .header-row{
+        margin-top: 1rem;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+    }
+    
+    .name {
+        margin: 0px;
+        font-size: 3.5rem;
+    }
+       
+    .post {
+        font-size: 2.5rem;
+    }
+
+    .contact-button-group{
+        padding: 0px;
+    }
+    
+    .colored {
+        width: 250px;
+        font-size: 2.5rem;
+    }
+    
+    .outlined {
+        width: 250px;
+        font-size: 2.5rem;
+    }
+    
+    .about-skills-row{
+        width: 100%;
+        margin-top: 1.5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 20px;
+    }
+
+    .about-column {
+        padding: 1rem;
+    }
+    
+    .skills-column {
+        padding: 1rem;
+    }
+    
+    .experience-carousel{
+        width: 100%;
+    }
+
+    .experience-card {
+        width: 50%;
+    }
+    
+    .experience-title {
+        font-size: 1.3rem;
+    }
+
+    .experience-interval {
+        font-size: 0.9rem;
+    }
+    
+    .projects-carousel{
+        padding-bottom: 1rem;
+        width: 100%;
+    }
+
+    .project-card {
+        width: 50%;
+    }
+    
+    .project-name{
+        font-size: 1.3rem;
+    }
+
+    .project-description{
+        font-size: 1.1rem;
+    }
+    
+    .tech-stack{
+        font-size: 1rem;
+    }
+    
+    .github-button{
+        font-size: 1.3rem;
+    }
+    
+    .releases-button{
+        font-size: 1.3rem;
+    }
+
+    .footer-row {
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        grid-template-rows: 1fr 3rem;
+        width: 100%;
+    }
+    
+    .links-column {
+        grid-template-columns: repeat(7, 1fr);
+    }
+    
+    .link:nth-child(1), .link:nth-child(2), .link:nth-child(3), .link:nth-child(4) {
+        grid-column: span 1;
+    }
+    
+    .link:nth-child(4) ~ .link {
+        grid-column: span 1;
+    }
+}
+
+/* large tablets and laptops */
+@media screen and (min-width: 960px){
+    
+    .name {
+        font-size: 4rem;
+    }
+       
+    .post {
+        font-size: 3rem;
+    }
+    
+    .colored {
+        font-size: 3rem;
+    }
+    
+    .outlined {
+        font-size: 3rem;
+    }
+
+    .experience-card {
+        width: 33%;
+    }
+
+    .project-card {
+        width: 33%;
+    }
+    
+    .footer{
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        width: 100%;
+    }
+
+    .footer-row {
+        width: 50%;
+    }
+}
+  
+/* Desktop styles */
+@media screen and (min-width: 1200px){
+    
+    .container-fluid {
+        width: 100%;
+        display: grid;
+        justify-items: center;
+    }
+
+    .name {
+        font-size: 5rem;
+    }
+       
+    .post {
+        font-size: 4rem;
+    }
+
+    .about-skills-row{
+        width: 80%;
+        display: grid;
+        justify-items: center;
+    }
+
+    .about-column{
+        width: 80%;
+    }
+
+    .skills-column{
+        width: 80%;
+    }
+
+    .experience-row {
+        width: 80%;
+    }
+
+    .experience-card {
+        width: 25%;
+    }
+
+    .projects-row {
+        width: 80%;
+    }
+
+    .project-card {
+        width: 25%;
+    }
+    
+    .footer-row {
+        width: 40%;
+    }
+}

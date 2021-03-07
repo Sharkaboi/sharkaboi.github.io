@@ -1,0 +1,40 @@
+body {
+    
+    /* light mode colors */
+    --bg: #F5F5F5;
+    --text-color: #707070;
+    --chevron-color: #E4E4E4;
+    --icon-color: #707070;
+    --card-color: #E4E4E4;
+    --btn-color:#707070;
+    --navbar-color:#EEEEEE;
+
+    --home-text-color:#2B2B2B;
+    --home-icon-color: #2B2B2B;
+
+    /* Specific colors */
+
+    /* Code styling */
+    --code-light-bg: #EEEEEE;
+    --code-dark-bg: #2B2B2B;
+    --hyperlink-color: #49AAAA;
+
+    /* Logo colors */
+    --logo-green: #11FF00;
+    --logo-blue: #00CBFF;
+}
+
+body.dark {
+
+    /* dark mode colors*/
+    --bg: #0C0C0C;
+    --text-color: #9F9F9F;
+    --chevron-color: #2B2B2B;
+    --icon-color: #9F9F9F;
+    --card-color: #2B2B2B;
+    --btn-color:#9F9F9F;
+    --navbar-color:#111111;
+
+    --home-text-color: #F5F5F5;
+    --home-icon-color: #F5F5F5;
+}
