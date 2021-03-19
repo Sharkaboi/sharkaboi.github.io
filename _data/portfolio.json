@@ -159,6 +159,21 @@
             "release_link": "https://github.com/Sharkaboi/GradWay/releases"
         },
         {
+            "name": "DigiMess",
+            "description": "An app to help organizations manage their food mess, mainly colleges. University Android mini project.",
+            "tech_stack": [
+                "Flutter",
+                "Firebase firestore",
+                "Bloc"
+            ],
+            "status": "completed",
+            "icon_url": "https://raw.githubusercontent.com/Sharkaboi/DigiMess/main/assets/logo/ic_launcher_playstore.png",
+            "banner_url": "https://raw.githubusercontent.com/Sharkaboi/DigiMess/main/assets/logo/ic_launcher_playstore.png",
+            "showcase_url": [],
+            "github_link": "https://github.com/Sharkaboi/DigiMess",
+            "release_link": "https://github.com/Sharkaboi/DigiMess/releases"
+        },
+        {
             "name": "CashTrack",
             "description": "A Web app to help manage your budget and expenses. University MiniProject.",
             "tech_stack": [
