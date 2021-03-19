@@ -112,26 +112,6 @@
             "release_link": "https://github.com/Sharkaboi/AttendanceManager/releases"
         },
         {
-            "name": "Birthday Remainder",
-            "description": "An app to maintain and notify Birthdays and other yearly events.",
-            "tech_stack": [
-                "MVVM Concepts",
-                "Room",
-                "Coroutines",
-                "Work Manager",
-                "Hilt",
-                "ViewBinding",
-                "MDC Library",
-                "Jetpack libraries"
-            ],
-            "status": "completed",
-            "icon_url": "https://raw.githubusercontent.com/Sharkaboi/Birthday_Remainder/master/app/src/main/ic_launcher-playstore.png",
-            "banner_url": "https://raw.githubusercontent.com/Sharkaboi/Birthday_Remainder/master/app/src/main/ic_launcher-playstore.png",
-            "showcase_url": ["https://raw.githubusercontent.com/Sharkaboi/Birthday_Remainder/master/app/src/main/ic_launcher-playstore.png"],
-            "github_link": "https://github.com/Sharkaboi/Birthday_Remainder",
-            "release_link": "https://github.com/Sharkaboi/Birthday_Remainder/releases"
-        },
-        {
             "name": "DigiMess",
             "description": "An app to help organizations manage their food mess, mainly colleges. University Android mini project.",
             "tech_stack": [
