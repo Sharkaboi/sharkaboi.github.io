@@ -38,6 +38,10 @@
                 "MVVM Concepts",
                 "Room",
                 "Coroutines",
+                "Hilt",
+                "ViewBinding",
+                "Coil",
+                "Coroutines",
                 "MDC Library",
                 "Jetpack libraries"
             ],
@@ -123,40 +127,9 @@
             "status": "completed",
             "icon_url": "https://raw.githubusercontent.com/Sharkaboi/Birthday_Remainder/master/app/src/main/ic_launcher-playstore.png",
             "banner_url": "https://raw.githubusercontent.com/Sharkaboi/Birthday_Remainder/master/app/src/main/ic_launcher-playstore.png",
-            "showcase_url": [],
+            "showcase_url": ["https://raw.githubusercontent.com/Sharkaboi/Birthday_Remainder/master/app/src/main/ic_launcher-playstore.png"],
             "github_link": "https://github.com/Sharkaboi/Birthday_Remainder",
             "release_link": "https://github.com/Sharkaboi/Birthday_Remainder/releases"
-        },
-        {
-            "name": "FoodFlix",
-            "description": "Food ordering app made for Internshala Course Final Project.",
-            "tech_stack": [
-                "Room",
-                "Volley",
-                "Async Tasks"
-            ],
-            "status": "completed",
-            "icon_url": "https://raw.githubusercontent.com/Sharkaboi/FoodFlix/master/app/src/main/ic_launcher-playstore.png",
-            "banner_url": "https://raw.githubusercontent.com/Sharkaboi/FoodFlix/master/app/src/main/ic_launcher-playstore.png",
-            "showcase_url": ["../assets/images/project-showcases/foodflix.png"],
-            "github_link": "https://github.com/Sharkaboi/FoodFlix",
-            "release_link": "https://github.com/Sharkaboi/FoodFlix/releases"
-        },
-        {
-            "name": "GradWay",
-            "description": "The All in One Solution For Graduation Students.",
-            "tech_stack": [
-                "MVVM Concepts",
-                "Firebase auth",
-                "Firestore",
-                "Jetpack libraries"
-            ],
-            "status": "archived",
-            "icon_url": "https://raw.githubusercontent.com/Sharkaboi/GradWay/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
-            "banner_url": "https://raw.githubusercontent.com/Sharkaboi/GradWay/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
-            "showcase_url": ["../assets/images/project-showcases/gradway.png"],
-            "github_link": "https://github.com/Sharkaboi/GradWay",
-            "release_link": "https://github.com/Sharkaboi/GradWay/releases"
         },
         {
             "name": "DigiMess",
@@ -169,7 +142,7 @@
             "status": "completed",
             "icon_url": "https://raw.githubusercontent.com/Sharkaboi/DigiMess/main/assets/logo/ic_launcher_playstore.png",
             "banner_url": "https://raw.githubusercontent.com/Sharkaboi/DigiMess/main/assets/logo/ic_launcher_playstore.png",
-            "showcase_url": [],
+            "showcase_url": ["https://raw.githubusercontent.com/Sharkaboi/DigiMess/main/assets/logo/ic_launcher_playstore.png"],
             "github_link": "https://github.com/Sharkaboi/DigiMess",
             "release_link": "https://github.com/Sharkaboi/DigiMess/releases"
         },
