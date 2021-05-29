@@ -31,6 +31,33 @@
     "mail_link": "mailto:sarathsedu@gmail.com",
     "projects": [
         {
+            "name": "MediaHub",
+            "description": "A simple MAL client. Uses the MAL Api.",
+            "tech_stack": [
+                "MVVM/MVI Concepts",
+                "Moshi",
+                "Retrofit",
+                "Coroutines",
+                "Hilt",
+                "Paging 3",
+                "ViewBinding",
+                "Coil",
+                "MDC Library",
+                "Jetpack libraries"
+            ],
+            "status": "completed",
+            "icon_url": "https://github.com/Sharkaboi/MediaHub/blob/master/app/src/main/ic_launcher-playstore.png",
+            "banner_url": "https://github.com/Sharkaboi/MediaHub/blob/master/app/src/main/ic_launcher-playstore.png",
+            "showcase_url": [
+                "../assets/images/project-showcases/mediahub/1.png",
+                "../assets/images/project-showcases/mediahub/2.png",
+                "../assets/images/project-showcases/mediahub/3.png",
+                "../assets/images/project-showcases/mediahub/4.png"
+            ],
+            "github_link": "https://github.com/Sharkaboi/MediaHub",
+            "release_link": "https://github.com/Sharkaboi/MediaHub/releases"
+        },
+        {
             "name": "Link Manager",
             "description": "An app to keep track of all your links.",
             "tech_stack": [
@@ -40,7 +67,6 @@
                 "Hilt",
                 "ViewBinding",
                 "Coil",
-                "Coroutines",
                 "MDC Library",
                 "Jetpack libraries"
             ],
@@ -121,7 +147,17 @@
             "status": "ongoing",
             "icon_url": "https://raw.githubusercontent.com/Sharkaboi/DigiMess/main/assets/logo/ic_launcher_playstore.png",
             "banner_url": "https://raw.githubusercontent.com/Sharkaboi/DigiMess/main/assets/logo/ic_launcher_playstore.png",
-            "showcase_url": ["https://raw.githubusercontent.com/Sharkaboi/DigiMess/main/assets/logo/ic_launcher_playstore.png"],
+            "showcase_url": [
+                "../assets/images/project-showcases/digimess/1.png",
+                "../assets/images/project-showcases/digimess/2.png",
+                "../assets/images/project-showcases/digimess/3.png",
+                "../assets/images/project-showcases/digimess/4.png",
+                "../assets/images/project-showcases/digimess/5.png",
+                "../assets/images/project-showcases/digimess/6.png",
+                "../assets/images/project-showcases/digimess/7.png",
+                "../assets/images/project-showcases/digimess/8.png",
+                "../assets/images/project-showcases/digimess/9.png"
+            ],
             "github_link": "https://github.com/Sharkaboi/DigiMess",
             "release_link": "https://github.com/Sharkaboi/DigiMess/releases"
         },
