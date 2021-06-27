@@ -1,0 +1,29 @@
+/* Mobile designs */
+.header{
+    background-color: var(--card-color);
+}
+
+.header-row{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.header-title {
+    font-size: 3rem;
+    font-family: Barlow-Bold;
+}
+
+/* small tablets and landscape phones*/
+@media screen and (min-width: 720px){
+    
+}
+
+/* Desktop styles */
+@media screen and (min-width: 1200px){
+    
+    .container-fluid {
+        width: 80%;
+    }
+
+}

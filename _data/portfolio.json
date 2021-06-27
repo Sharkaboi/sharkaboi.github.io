@@ -1,12 +1,10 @@
 {
-    "about": "I'm an avid learner who is keen on having a career in Android Development. \nAlso interested in tech and PC hardware. \nCurrently doing Undergrad degree in Cochin University of Science and Technology.\nSpare time hobbies include watching anime or browsing forums.",
+    "about": "I'm an curious learner who is into Android Development. \nAlso interested in tech and PC hardware. \nCurrently doing Undergrad degree in Cochin University of Science and Technology.\nProbably watching anime or browsing forums in my spare time.",
     "post": "Android developer",
     "skills": [
         "Kotlin Android Development",
-        "Android libraries (Retrofit, Room, Firebase SDK, Hilt, Coroutines)",
+        "Android libraries (Retrofit, Room, Hilt, Coroutines and other jetpack libraries)",
         "Software architecture (MVVM, MVI)",
-        "PhotoShop, Sony Vegas, Adobe Xd, Figma",
-        "Flutter development",
         "Git/Github"
     ],
     "experience": [
@@ -32,7 +30,7 @@
     "projects": [
         {
             "name": "MediaHub",
-            "description": "A simple MAL client. Uses the MAL Api.",
+            "description": "A simple MyAnimeList client to track anime and manga.",
             "tech_stack": [
                 "MVVM/MVI Concepts",
                 "Moshi",
@@ -118,7 +116,7 @@
         },
         {
             "name": "Attendance Manager",
-            "description": "An app to keep track of attendance for you. Uses Room and Firebase for backup.",
+            "description": "An app to keep track of attendance for you.",
             "tech_stack": [
                 "MVVM Concepts",
                 "Room",
@@ -160,6 +158,22 @@
             ],
             "github_link": "https://github.com/Sharkaboi/DigiMess",
             "release_link": "https://github.com/Sharkaboi/DigiMess/releases"
+        },
+        {
+            "name": "EmptyGit",
+            "description": "Kotlin CLI tool to generate placeholder files in empty folders.",
+            "tech_stack": [
+                "Kotlin",
+                "Clikt"
+            ],
+            "status": "completed",
+            "icon_url": "https://raw.githubusercontent.com/Sharkaboi/EmptyGit/main/EmptyGit.png",
+            "banner_url": "https://raw.githubusercontent.com/Sharkaboi/EmptyGit/main/EmptyGit.png",
+            "showcase_url": [
+                "https://raw.githubusercontent.com/Sharkaboi/EmptyGit/main/EmptyGit.png"
+            ],
+            "github_link": "https://github.com/Sharkaboi/EmptyGit",
+            "release_link": "https://github.com/Sharkaboi/EmptyGit/releases"
         },
         {
             "name": "CashTrack",

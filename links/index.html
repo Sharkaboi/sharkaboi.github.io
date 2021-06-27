@@ -1,0 +1,24 @@
+---
+title: Links
+layout: links
+---
+{% include theme-option.html %}
+<div class="header">
+    <div class="header-row">
+        <div class="title-section">
+            <div class="header-title">Links</div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="text-center my-5">
+        <ul>
+          {% for link in site.data.socials %}
+            <li class="social-entry-card">
+                <a href="{{ link[1] }}">{{ link[0] | capitalize }}</a>
+            </li>
+            {% endfor %}  
+        </ul>    
+    </div>
+</div>
