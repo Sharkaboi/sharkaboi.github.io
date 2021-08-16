@@ -9,6 +9,14 @@
     ],
     "experience": [
         {
+            "title": "Software Engineering Intern",
+            "company": "ClusterDev",
+            "from": "Aug 2021",
+            "to": "Present",
+            "description": "Working on the Manglish/Desh keyboard apps",
+            "link": "https://clusterdev.com/"
+        },
+        {
             "title": "Android Intern",
             "company": "Stylabs",
             "from": "Nov 2020",
