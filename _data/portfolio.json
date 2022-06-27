@@ -1,5 +1,5 @@
 {
-    "about": "I'm an curious learner who is into Android Development. \nAlso interested in tech and PC hardware. \nCurrently doing Undergrad degree in Cochin University of Science and Technology.\nProbably watching anime or browsing forums in my spare time.",
+    "about": "I try make apps. \nProbably watching anime or playing Valorant when free.",
     "post": "Android developer",
     "skills": [
         "Kotlin Android Development",
@@ -9,11 +9,19 @@
     ],
     "experience": [
         {
+            "title": "Android Developer",
+            "company": "ClusterDev",
+            "from": "Jul 2022",
+            "to": "Present",
+            "description": "Working on the Manglish/Desh keyboard apps",
+            "link": "https://clusterdev.com/"
+        },
+        {
             "title": "Software Engineering Intern",
             "company": "ClusterDev",
             "from": "Aug 2021",
-            "to": "Present",
-            "description": "Working on the Manglish/Desh keyboard apps",
+            "to": "Jun 2022",
+            "description": "Worked on features for Manglish/Desh keyboard.",
             "link": "https://clusterdev.com/"
         },
         {
