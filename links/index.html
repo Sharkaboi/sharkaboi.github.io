@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon-16x16.png">
+<link rel="manifest" href="../assets/images/favicon/site.webmanifest">
+<link rel="mask-icon" href="../assets/images/favicon/safari-pinned-tab.svg" color="#000000">
+<link rel="shortcut icon" href="../assets/images/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="msapplication-config" content="../assets/images/favicon/browserconfig.xml">
+<meta name="theme-color" content="#000000">
+  <title>Links</title>
+  <link rel="stylesheet" href="../assets/css/util/common.css">
+  <link rel="stylesheet" href="../assets/css/links.css">
+</head>
+
+<body>
+  <div class="theme">
+    <input type="checkbox" id="themeOption" class="themeCheck">
+    <label for="themeOption"><i class="fas fa-sun" id="themeIcon"></i></label>
+</div>
+<script>
+    var themeOption = document.getElementById('themeOption')
+    var themeIcon = document.getElementById('themeIcon')
+    if (themeOption) {
+        initTheme()
+        themeOption.addEventListener('change', function (event) {
+            resetTheme()
+        });
+
+        function resetTheme() {
+            if (themeOption.checked) {
+                document.body.classList.toggle('dark')
+                themeIcon.classList.replace("fa-sun", "fa-moon")
+                localStorage.setItem('themeOption', 'dark')
+            } else {
+                document.body.classList.toggle('dark')
+                themeIcon.classList.replace("fa-moon", "fa-sun")
+                localStorage.removeItem('themeOption')
+            }
+        };
+    }
+
+    function initTheme() {
+        var darkThemeSelected = (localStorage.getItem('themeOption') !== null && localStorage.getItem('themeOption') === 'dark');
+        if (darkThemeSelected) {
+            themeOption.checked = true
+            themeIcon.classList.replace("fa-sun", "fa-moon")
+            document.body.classList.toggle('dark')
+        }
+    }
+</script>
+<div class="header">
+    <div class="header-row">
+        <div class="title-section">
+            <div class="header-title">Links</div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="text-center my-5">
+        <ul>
+          
+            <li class="social-entry-card">
+                <a href="https://github.com/Sharkaboi">Github</a>
+            </li>
+            
+            <li class="social-entry-card">
+                <a href="https://www.instagram.com/sharkaboiii/">Ig</a>
+            </li>
+            
+            <li class="social-entry-card">
+                <a href="https://www.linkedin.com/in/cybershark">Linkedin</a>
+            </li>
+            
+            <li class="social-entry-card">
+                <a href="https://www.twitch.tv/cyber_shark">Twitch</a>
+            </li>
+            
+            <li class="social-entry-card">
+                <a href="https://medium.com/@cybershark">Medium</a>
+            </li>
+            
+            <li class="social-entry-card">
+                <a href="https://twitter.com/sharkaboi">Twitter</a>
+            </li>
+            
+            <li class="social-entry-card">
+                <a href="mailto:sarathsedu@gmail.com">Email</a>
+            </li>
+            
+            <li class="social-entry-card">
+                <a href="https://play.google.com/store?hl=en">Playstore</a>
+            </li>
+            
+            <li class="social-entry-card">
+                <a href="https://myanimelist.net/profile/Cyber_SharK">Mal</a>
+            </li>
+            
+            <li class="social-entry-card">
+                <a href="https://bit.ly/2A9IzJn">Stackoverflow</a>
+            </li>
+            
+            <li class="social-entry-card">
+                <a href="https://www.reddit.com/user/SharkaBoi">Reddit</a>
+            </li>
+            
+            <li class="social-entry-card">
+                <a href="https://www.hackerrank.com/CyberShark?hr_r=1">Hackerrank</a>
+            </li>
+            
+            <li class="social-entry-card">
+                <a href="https://discord.com/users/287436478030544896">Discord</a>
+            </li>
+              
+        </ul>    
+    </div>
+</div>
+  <script src="../assets/js/lib/jquery.js"></script>
+</body>
+
+</html>

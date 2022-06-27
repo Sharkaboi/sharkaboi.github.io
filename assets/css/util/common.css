@@ -1,0 +1,35 @@
+@import url(fonts.css);
+@import url(../constants/colors.css);
+@import url(../lib/fontawesome.css);
+@import url(../lib/bootstrap.css);
+@import url(util.css);
+@import url(theme.css);
+
+/* Universal font*/
+* {
+    font-family: Barlow-Regular;
+}
+
+body,html {
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    background-color: var(--bg);
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+  a:visited {
+    color: inherit;
+  }
+  
+  a:hover {
+    color: inherit;
+  }
+  
+  a:active {
+    color: inherit;
+  } 
