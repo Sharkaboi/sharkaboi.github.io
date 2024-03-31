@@ -72,6 +72,23 @@
             "release_link": "https://github.com/Sharkaboi/MediaHub/releases"
         },
         {
+            "name": "AppUpdateChecker",
+            "description": "An android library that checks for app updates.",
+            "tech_stack": [
+                "Moshi",
+                "Retrofit",
+                "Coroutines"
+            ],
+            "status": "completed",
+            "icon_url": "https://repository-images.githubusercontent.com/388470290/10bc1353-db7e-4dca-a766-9d7fe72a69c1",
+            "banner_url": "https://repository-images.githubusercontent.com/388470290/10bc1353-db7e-4dca-a766-9d7fe72a69c1",
+            "showcase_url": [
+                "https://repository-images.githubusercontent.com/388470290/10bc1353-db7e-4dca-a766-9d7fe72a69c1"
+            ],
+            "github_link": "https://github.com/Sharkaboi/AppUpdateChecker",
+            "release_link": "https://github.com/Sharkaboi/AppUpdateChecker/releases"
+        },
+        {
             "name": "Link Manager",
             "description": "An app to keep track of all your links.",
             "tech_stack": [
