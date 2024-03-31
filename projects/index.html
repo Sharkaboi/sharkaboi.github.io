@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon-16x16.png">
+<link rel="manifest" href="../assets/images/favicon/site.webmanifest">
+<link rel="mask-icon" href="../assets/images/favicon/safari-pinned-tab.svg" color="#000000">
+<link rel="shortcut icon" href="../assets/images/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="msapplication-config" content="../assets/images/favicon/browserconfig.xml">
+<meta name="theme-color" content="#000000">
+  <title>Sarath's Projects</title>
+  <link rel="stylesheet" href="../assets/css/util/common.css">
+  <link rel="stylesheet" href="../assets/css/lib/flickity.css" media="screen">
+  <link rel="stylesheet" href="https://unpkg.com/flickity-fullscreen@1/fullscreen.css">
+  <link rel="stylesheet" href="../assets/css/projects.css">
+</head>
+
+<body>
+  <div class="theme">
+    <input type="checkbox" id="themeOption" class="themeCheck">
+    <label for="themeOption"><i class="fas fa-sun" id="themeIcon"></i></label>
+</div>
+<script>
+    var themeOption = document.getElementById('themeOption')
+    var themeIcon = document.getElementById('themeIcon')
+    if (themeOption) {
+        initTheme()
+        themeOption.addEventListener('change', function (event) {
+            resetTheme()
+        });
+
+        function resetTheme() {
+            if (themeOption.checked) {
+                document.body.classList.toggle('dark')
+                themeIcon.classList.replace("fa-sun", "fa-moon")
+                localStorage.setItem('themeOption', 'dark')
+            } else {
+                document.body.classList.toggle('dark')
+                themeIcon.classList.replace("fa-moon", "fa-sun")
+                localStorage.removeItem('themeOption')
+            }
+        };
+    }
+
+    function initTheme() {
+        var darkThemeSelected = (localStorage.getItem('themeOption') !== null && localStorage.getItem('themeOption') === 'dark');
+        if (darkThemeSelected) {
+            themeOption.checked = true
+            themeIcon.classList.replace("fa-sun", "fa-moon")
+            document.body.classList.toggle('dark')
+        }
+    }
+</script>
+<div class="header">
+    <div class="header-row">
+        <div class="title-section">
+            <div class="header-title">Projects</div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="projects">
+        
+            <div class="project-card">
+                <div class="showcase js-flickity"
+                    data-flickity-options='{ "fullscreen": true, "pageDots": false, "imagesLoaded": true }'>
+                    
+                        <img class="image" src="../assets/images/project-showcases/mediahub/1.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/mediahub/2.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/mediahub/3.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/mediahub/4.png">
+                    
+                </div>
+                <div class="project-details">
+                    <a href="https://github.com/Sharkaboi/MediaHub" target="_blank">
+                        <span class="project-name">MediaHub</span>
+                    </a>
+                    <p class="project-description">A simple MyAnimeList client to track anime and manga.</p>
+                    <p class="tech-stack">
+                        Uses
+                        
+                        
+                        MVVM/MVI Concepts,
+                        
+                        
+                        
+                        Moshi,
+                        
+                        
+                        
+                        Retrofit,
+                        
+                        
+                        
+                        Coroutines,
+                        
+                        
+                        
+                        Hilt,
+                        
+                        
+                        
+                        Paging 3,
+                        
+                        
+                        
+                        ViewBinding,
+                        
+                        
+                        
+                        Coil,
+                        
+                        
+                        
+                        MDC Library,
+                        
+                        
+                        
+                        Jetpack libraries.
+                        
+                        
+                    </p>
+                    <a href="https://github.com/Sharkaboi/MediaHub/releases" target="_blank">
+                        <button class="releases-button">Releases</button>
+                    </a>
+                </div>
+            </div>
+        
+            <div class="project-card">
+                <div class="showcase js-flickity"
+                    data-flickity-options='{ "fullscreen": true, "pageDots": false, "imagesLoaded": true }'>
+                    
+                        <img class="image" src="https://repository-images.githubusercontent.com/388470290/10bc1353-db7e-4dca-a766-9d7fe72a69c1">
+                    
+                </div>
+                <div class="project-details">
+                    <a href="https://github.com/Sharkaboi/AppUpdateChecker" target="_blank">
+                        <span class="project-name">AppUpdateChecker</span>
+                    </a>
+                    <p class="project-description">An android library that checks for app updates.</p>
+                    <p class="tech-stack">
+                        Uses
+                        
+                        
+                        Moshi,
+                        
+                        
+                        
+                        Retrofit,
+                        
+                        
+                        
+                        Coroutines.
+                        
+                        
+                    </p>
+                    <a href="https://github.com/Sharkaboi/AppUpdateChecker/releases" target="_blank">
+                        <button class="releases-button">Releases</button>
+                    </a>
+                </div>
+            </div>
+        
+            <div class="project-card">
+                <div class="showcase js-flickity"
+                    data-flickity-options='{ "fullscreen": true, "pageDots": false, "imagesLoaded": true }'>
+                    
+                        <img class="image" src="../assets/images/project-showcases/link-manager.png">
+                    
+                </div>
+                <div class="project-details">
+                    <a href="https://github.com/Sharkaboi/LinkManager" target="_blank">
+                        <span class="project-name">Link Manager</span>
+                    </a>
+                    <p class="project-description">An app to keep track of all your links.</p>
+                    <p class="tech-stack">
+                        Uses
+                        
+                        
+                        MVVM Concepts,
+                        
+                        
+                        
+                        Room,
+                        
+                        
+                        
+                        Coroutines,
+                        
+                        
+                        
+                        Hilt,
+                        
+                        
+                        
+                        ViewBinding,
+                        
+                        
+                        
+                        Coil,
+                        
+                        
+                        
+                        MDC Library,
+                        
+                        
+                        
+                        Jetpack libraries.
+                        
+                        
+                    </p>
+                    <a href="https://github.com/Sharkaboi/LinkManager/releases" target="_blank">
+                        <button class="releases-button">Releases</button>
+                    </a>
+                </div>
+            </div>
+        
+            <div class="project-card">
+                <div class="showcase js-flickity"
+                    data-flickity-options='{ "fullscreen": true, "pageDots": false, "imagesLoaded": true }'>
+                    
+                        <img class="image" src="../assets/images/project-showcases/drawings-manager.png">
+                    
+                </div>
+                <div class="project-details">
+                    <a href="https://github.com/Sharkaboi/DrawingsApp" target="_blank">
+                        <span class="project-name">Drawings Manager</span>
+                    </a>
+                    <p class="project-description">An app to and and manage floor plan drawings with markers.</p>
+                    <p class="tech-stack">
+                        Uses
+                        
+                        
+                        MVVM Concepts,
+                        
+                        
+                        
+                        Room,
+                        
+                        
+                        
+                        Coroutines,
+                        
+                        
+                        
+                        Hilt,
+                        
+                        
+                        
+                        ViewBinding,
+                        
+                        
+                        
+                        Coil,
+                        
+                        
+                        
+                        MDC Library,
+                        
+                        
+                        
+                        Jetpack libraries.
+                        
+                        
+                    </p>
+                    <a href="https://github.com/Sharkaboi/DrawingsApp/releases" target="_blank">
+                        <button class="releases-button">Releases</button>
+                    </a>
+                </div>
+            </div>
+        
+            <div class="project-card">
+                <div class="showcase js-flickity"
+                    data-flickity-options='{ "fullscreen": true, "pageDots": false, "imagesLoaded": true }'>
+                    
+                        <img class="image" src="../assets/images/project-showcases/jokes.png">
+                    
+                </div>
+                <div class="project-details">
+                    <a href="https://github.com/Sharkaboi/Jokes" target="_blank">
+                        <span class="project-name">Jokes</span>
+                    </a>
+                    <p class="project-description">Displays random jokes and can save them. 
+Made for teaching students during AndroidStudyJams event.</p>
+                    <p class="tech-stack">
+                        Uses
+                        
+                        
+                        MVVM Concepts,
+                        
+                        
+                        
+                        Room,
+                        
+                        
+                        
+                        Coroutines,
+                        
+                        
+                        
+                        Retrofit,
+                        
+                        
+                        
+                        Hilt,
+                        
+                        
+                        
+                        ViewBinding,
+                        
+                        
+                        
+                        Jetpack libraries.
+                        
+                        
+                    </p>
+                    <a href="https://github.com/Sharkaboi/Jokes/releases" target="_blank">
+                        <button class="releases-button">Releases</button>
+                    </a>
+                </div>
+            </div>
+        
+            <div class="project-card">
+                <div class="showcase js-flickity"
+                    data-flickity-options='{ "fullscreen": true, "pageDots": false, "imagesLoaded": true }'>
+                    
+                        <img class="image" src="../assets/images/project-showcases/digimess/1.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/digimess/2.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/digimess/3.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/digimess/4.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/digimess/5.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/digimess/6.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/digimess/7.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/digimess/8.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/digimess/9.png">
+                    
+                </div>
+                <div class="project-details">
+                    <a href="https://github.com/Sharkaboi/DigiMess" target="_blank">
+                        <span class="project-name">DigiMess</span>
+                    </a>
+                    <p class="project-description">An app to help organizations manage their food mess, mainly colleges. University Android mini project.</p>
+                    <p class="tech-stack">
+                        Uses
+                        
+                        
+                        Flutter,
+                        
+                        
+                        
+                        Firebase firestore,
+                        
+                        
+                        
+                        Bloc.
+                        
+                        
+                    </p>
+                    <a href="https://github.com/Sharkaboi/DigiMess/releases" target="_blank">
+                        <button class="releases-button">Releases</button>
+                    </a>
+                </div>
+            </div>
+        
+            <div class="project-card">
+                <div class="showcase js-flickity"
+                    data-flickity-options='{ "fullscreen": true, "pageDots": false, "imagesLoaded": true }'>
+                    
+                        <img class="image" src="https://raw.githubusercontent.com/Sharkaboi/EmptyGit/main/EmptyGit.png">
+                    
+                </div>
+                <div class="project-details">
+                    <a href="https://github.com/Sharkaboi/EmptyGit" target="_blank">
+                        <span class="project-name">EmptyGit</span>
+                    </a>
+                    <p class="project-description">Kotlin CLI tool to generate placeholder files in empty folders.</p>
+                    <p class="tech-stack">
+                        Uses
+                        
+                        
+                        Kotlin,
+                        
+                        
+                        
+                        Clikt.
+                        
+                        
+                    </p>
+                    <a href="https://github.com/Sharkaboi/EmptyGit/releases" target="_blank">
+                        <button class="releases-button">Releases</button>
+                    </a>
+                </div>
+            </div>
+        
+            <div class="project-card">
+                <div class="showcase js-flickity"
+                    data-flickity-options='{ "fullscreen": true, "pageDots": false, "imagesLoaded": true }'>
+                    
+                        <img class="image" src="../assets/images/project-showcases/cashtrack/homepage.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/cashtrack/login.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/cashtrack/signup.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/cashtrack/dashboard.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/cashtrack/history.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/cashtrack/settings.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/cashtrack/add.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/cashtrack/sub.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/cashtrack/transfer.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/cashtrack/404.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/cashtrack/about.png">
+                    
+                        <img class="image" src="../assets/images/project-showcases/cashtrack/faq.png">
+                    
+                </div>
+                <div class="project-details">
+                    <a href="https://github.com/Sharkaboi/CashTrack" target="_blank">
+                        <span class="project-name">CashTrack</span>
+                    </a>
+                    <p class="project-description">A Web app to help manage your budget and expenses. University MiniProject.</p>
+                    <p class="tech-stack">
+                        Uses
+                        
+                        
+                        PHP,
+                        
+                        
+                        
+                        MySQL,
+                        
+                        
+                        
+                        HTML/CSS,
+                        
+                        
+                        
+                        Bootstrap,
+                        
+                        
+                        
+                        Google Charts JS,
+                        
+                        
+                        
+                        000webhost.
+                        
+                        
+                    </p>
+                    <a href="https://cashtrk.000webhostapp.com/" target="_blank">
+                        <button class="releases-button">Releases</button>
+                    </a>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+
+<div class="footer">
+    <div class="copyright" id="footerCopyrightYear"></div>
+</div>
+
+<script>
+    var footerText = document.getElementById('footerCopyrightYear')
+    var currentDate = new Date().getFullYear()
+    footerText.innerHTML = "&copy; 2020 - " + currentDate + " Sarath S"
+</script>
+  <script src="../assets/js/lib/jquery.js"></script>
+  <script src="../assets/js/lib/flickity.pkgd.min.js"></script>
+  <script src="https://unpkg.com/flickity-fullscreen@1/fullscreen.js"></script>
+</body>
+
+</html>
