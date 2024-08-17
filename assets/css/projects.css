@@ -46,7 +46,7 @@
     font-size: 2rem;
     margin-bottom: 5px;
     font-family: Barlow-Medium;
-    color: var(--hyperlink-color);
+    color: var(--home-text-color);
     text-decoration: underline;
 }
 
