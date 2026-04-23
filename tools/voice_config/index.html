@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dummy Voice Config Builder</title>
+	<style>
+		:root {
+			--bg: #fafafa;
+			--panel: #ffffff;
+			--border: #e4e4e7;
+			--text: #18181b;
+			--muted: #71717a;
+			--subtle: #f4f4f5;
+			--accent: #2563eb;
+			--accent-hover: #1d4ed8;
+			--danger: #dc2626;
+			--danger-hover: #b91c1c;
+			--danger-bg: #fef2f2;
+			--success: #16a34a;
+		}
+
+		* { box-sizing: border-box; }
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			background: var(--bg);
+			color: var(--text);
+			margin: 0;
+			padding: 24px;
+			line-height: 1.5;
+		}
+
+		.container { max-width: 840px; margin: 0 auto; }
+
+		h1 { margin: 0 0 4px 0; font-size: 24px; }
+
+		.subtitle { color: var(--muted); margin-bottom: 24px; font-size: 14px; }
+
+		.panel {
+			background: var(--panel);
+			border: 1px solid var(--border);
+			border-radius: 8px;
+			padding: 16px;
+			margin-bottom: 16px;
+		}
+
+		.panel h2 {
+			margin: 0 0 4px 0;
+			font-size: 16px;
+			font-weight: 600;
+		}
+
+		.panel-hint {
+			font-size: 12px;
+			color: var(--muted);
+			margin-bottom: 12px;
+		}
+
+		label {
+			display: block;
+			font-size: 13px;
+			color: var(--text);
+			margin-bottom: 2px;
+			font-weight: 500;
+		}
+
+		.label-hint {
+			display: block;
+			font-size: 12px;
+			color: var(--muted);
+			margin-bottom: 4px;
+			font-weight: 400;
+		}
+
+		input[type="text"], input[type="number"], textarea, select {
+			width: 100%;
+			padding: 8px 10px;
+			border: 1px solid var(--border);
+			border-radius: 6px;
+			font-size: 14px;
+			font-family: inherit;
+			background: #fff;
+			color: var(--text);
+		}
+
+		textarea {
+			resize: vertical;
+			font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;
+			font-size: 12px;
+		}
+
+		input:focus, textarea:focus, select:focus {
+			outline: 2px solid var(--accent);
+			outline-offset: -1px;
+			border-color: var(--accent);
+		}
+
+		input.invalid { border-color: var(--danger); }
+
+		.field-row {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 12px;
+			margin-bottom: 16px;
+		}
+
+		.phrases-subtitle {
+			font-size: 14px;
+			font-weight: 600;
+			margin: 8px 0 2px 0;
+		}
+
+		.phrases-hint {
+			font-size: 12px;
+			color: var(--muted);
+			margin-bottom: 10px;
+		}
+
+		.phrase-header {
+			display: grid;
+			grid-template-columns: 160px 1fr 36px;
+			gap: 8px;
+			padding: 0 2px;
+			margin-bottom: 4px;
+		}
+
+		.phrase-header span {
+			font-size: 11px;
+			color: var(--muted);
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: 0.03em;
+		}
+
+		.phrase-row {
+			display: grid;
+			grid-template-columns: 160px 1fr 36px;
+			gap: 8px;
+			margin-bottom: 8px;
+			align-items: start;
+		}
+
+		.phrase-row input { font-size: 13px; }
+
+		button {
+			padding: 8px 14px;
+			border: 1px solid transparent;
+			border-radius: 6px;
+			background: var(--accent);
+			color: #fff;
+			font-size: 13px;
+			font-weight: 500;
+			cursor: pointer;
+			font-family: inherit;
+		}
+
+		button:hover { background: var(--accent-hover); }
+
+		button.secondary {
+			background: #fff;
+			color: var(--text);
+			border-color: var(--border);
+		}
+
+		button.secondary:hover { background: var(--subtle); }
+
+		button.danger-icon {
+			background: transparent;
+			color: var(--danger);
+			border: 1px solid transparent;
+			padding: 6px 0;
+			width: 36px;
+		}
+
+		button.danger-icon:hover {
+			color: var(--danger-hover);
+			background: var(--danger-bg);
+			border-color: #fecaca;
+		}
+
+		.add-btn {
+			margin-top: 4px;
+			background: #fff;
+			color: var(--accent);
+			border-color: var(--border);
+		}
+
+		.add-btn:hover { background: #eff6ff; }
+
+		.actions {
+			display: flex;
+			gap: 8px;
+			align-items: center;
+			margin-top: 12px;
+			flex-wrap: wrap;
+		}
+
+		.status {
+			font-size: 13px;
+			color: var(--success);
+			opacity: 0;
+			transition: opacity 0.2s;
+		}
+
+		.status.visible { opacity: 1; }
+
+		.status.error { color: var(--danger); }
+
+		.errors-panel {
+			background: var(--danger-bg);
+			border: 1px solid #fecaca;
+			border-radius: 8px;
+			padding: 14px 16px;
+			margin-bottom: 16px;
+			color: var(--danger-hover);
+		}
+
+		.errors-panel h3 {
+			margin: 0 0 8px 0;
+			font-size: 14px;
+		}
+
+		.errors-panel ul {
+			margin: 0;
+			padding-left: 18px;
+			font-size: 13px;
+		}
+
+		.errors-panel li { margin-bottom: 2px; }
+
+		.hidden { display: none; }
+
+		code {
+			background: var(--subtle);
+			padding: 1px 5px;
+			border-radius: 3px;
+			font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;
+			font-size: 12px;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<h1>Dummy Voice Config Builder</h1>
+
+	<div class="panel">
+		<label for="language">Language</label>
+		<select id="language"></select>
+	</div>
+
+	<div id="modes"></div>
+
+	<div id="errors-container" class="errors-panel hidden">
+		<h3>Fix these before generating the config:</h3>
+		<ul id="errors-list"></ul>
+	</div>
+
+	<div id="output-panel" class="panel hidden">
+		<h2>Generated config</h2>
+		<textarea id="json-output" rows="14" readonly></textarea>
+		<div class="actions">
+			<button class="secondary" id="copy-json">Copy JSON</button>
+			<button id="copy-link">Copy appconfig link</button>
+			<span class="status" id="output-status"></span>
+		</div>
+	</div>
+</div>
+
+<script>
+	const DEFAULT_START_SPEAKING_MESSAGE_DELAY = 200;
+	const DEFAULT_LISTENING_MESSAGE_DELAY = 600;
+	const DEFAULT_PHRASE_DELAY = 1000;
+	const CONFIG_KEY = 'dummy_voice_config_json';
+
+	const MODES = [
+		{ key: 'native', label: 'Native' },
+		{ key: 'english', label: 'English' },
+		{ key: 'romanized', label: 'Romanized' },
+	];
+
+	// Mirrors KeyboardFlavors.kt — keep in sync if a flavor is added/renamed.
+	const LANGUAGES = [
+		'malayalam', 'hindi', 'amharic', 'bangla', 'chinese', 'gujarati',
+		'japanese', 'kannada', 'marathi', 'nepali', 'odia', 'punjabi',
+		'russian', 'sanskrit', 'sinhala', 'tamil', 'telugu', 'tigrinya',
+		'urdu', 'vietnamese', 'arabic',
+	];
+
+	const state = {
+		language: 'malayalam',
+	};
+	MODES.forEach(m => {
+		state[m.key] = {
+			startSpeakingMessageDelay: DEFAULT_START_SPEAKING_MESSAGE_DELAY,
+			listeningMessageDelay: DEFAULT_LISTENING_MESSAGE_DELAY,
+			phrases: [{ delay: DEFAULT_PHRASE_DELAY, fieldText: '' }],
+		};
+	});
+
+	const modesContainer = document.getElementById('modes');
+	const jsonOutput = document.getElementById('json-output');
+	const languageSelect = document.getElementById('language');
+	const errorsContainer = document.getElementById('errors-container');
+	const errorsList = document.getElementById('errors-list');
+	const outputPanel = document.getElementById('output-panel');
+
+	function populateLanguages() {
+		LANGUAGES.forEach(lang => {
+			languageSelect.appendChild(el('option', { value: lang }, [document.createTextNode(capitalize(lang))]));
+		});
+		languageSelect.addEventListener('change', () => {
+			state.language = languageSelect.value;
+			refresh();
+		});
+	}
+
+	function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+	function render() {
+		modesContainer.innerHTML = '';
+		MODES.forEach(mode => modesContainer.appendChild(renderMode(mode)));
+		refresh();
+	}
+
+	function renderMode(mode) {
+		const s = state[mode.key];
+		const panel = el('div', { class: 'panel' });
+		panel.appendChild(el('h2', {}, [document.createTextNode(mode.label)]));
+
+		const fieldRow = el('div', { class: 'field-row' });
+		fieldRow.appendChild(numberField(
+			'Start-speaking message delay (ms)',
+			s.startSpeakingMessageDelay,
+			DEFAULT_START_SPEAKING_MESSAGE_DELAY,
+			v => { s.startSpeakingMessageDelay = v; refresh(); }
+		));
+		fieldRow.appendChild(numberField(
+			'Listening message delay (ms)',
+			s.listeningMessageDelay,
+			DEFAULT_LISTENING_MESSAGE_DELAY,
+			v => { s.listeningMessageDelay = v; refresh(); }
+		));
+		panel.appendChild(fieldRow);
+
+		panel.appendChild(el('div', { class: 'phrases-subtitle' }, [document.createTextNode('Phrases')]));
+
+		const header = el('div', { class: 'phrase-header' });
+		header.appendChild(el('span', {}, [document.createTextNode('Duration (ms)')]));
+		header.appendChild(el('span', {}, [document.createTextNode('Text')]));
+		header.appendChild(el('span', {}, []));
+		panel.appendChild(header);
+
+		const list = el('div', {});
+		s.phrases.forEach((_, i) => list.appendChild(renderPhraseRow(mode.key, i)));
+		panel.appendChild(list);
+
+		const addBtn = el('button', { class: 'add-btn' }, [document.createTextNode('+ Add phrase')]);
+		addBtn.addEventListener('click', () => {
+			s.phrases.push({ delay: DEFAULT_PHRASE_DELAY, fieldText: '' });
+			render();
+		});
+		panel.appendChild(addBtn);
+
+		return panel;
+	}
+
+	function renderPhraseRow(modeKey, index) {
+		const s = state[modeKey];
+		const p = s.phrases[index];
+		const row = el('div', { class: 'phrase-row' });
+
+		const delayInput = el('input', {
+			type: 'number', min: '0',
+			value: String(p.delay),
+			placeholder: 'Time before showing this phrase',
+			title: 'Time before showing this phrase (ms)',
+		});
+		delayInput.addEventListener('input', () => {
+			const v = parseInt(delayInput.value, 10);
+			p.delay = Number.isFinite(v) ? v : NaN;
+			refresh();
+		});
+		row.appendChild(delayInput);
+
+		const textInput = el('input', {
+			type: 'text',
+			value: p.fieldText,
+			placeholder: 'What appears in the text field',
+			title: 'Text that appears as a partial result',
+		});
+		textInput.addEventListener('input', () => {
+			p.fieldText = textInput.value;
+			refresh();
+		});
+		row.appendChild(textInput);
+
+		const removeBtn = el('button', { class: 'danger-icon', title: 'Remove phrase' }, [document.createTextNode('✕')]);
+		removeBtn.addEventListener('click', () => {
+			if (s.phrases.length === 1) {
+				s.phrases[0] = { delay: DEFAULT_PHRASE_DELAY, fieldText: '' };
+			} else {
+				s.phrases.splice(index, 1);
+			}
+			render();
+		});
+		row.appendChild(removeBtn);
+
+		return row;
+	}
+
+	function numberField(labelText, value, defaultValue, onChange) {
+		const wrap = el('div', {});
+		wrap.appendChild(el('label', {}, [document.createTextNode(labelText)]));
+		const input = el('input', { type: 'number', min: '0', value: String(value) });
+		input.addEventListener('input', () => {
+			const v = parseInt(input.value, 10);
+			onChange(Number.isFinite(v) ? v : NaN);
+		});
+		wrap.appendChild(input);
+		return wrap;
+	}
+
+	function el(tag, attrs, children) {
+		const node = document.createElement(tag);
+		if (attrs) {
+			for (const k in attrs) node.setAttribute(k, attrs[k]);
+		}
+		if (children) children.forEach(c => node.appendChild(c));
+		return node;
+	}
+
+	function validate() {
+		const errors = [];
+		if (!state.language) {
+			errors.push('Select a language.');
+		}
+		MODES.forEach(mode => {
+			const s = state[mode.key];
+			if (!Number.isFinite(s.startSpeakingMessageDelay) || s.startSpeakingMessageDelay < 0) {
+				errors.push(`${mode.label}: start-speaking message delay must be 0 or more.`);
+			}
+			if (!Number.isFinite(s.listeningMessageDelay) || s.listeningMessageDelay < 0) {
+				errors.push(`${mode.label}: listening message delay must be 0 or more.`);
+			}
+			const hasText = s.phrases.some(p => p.fieldText && p.fieldText.trim().length > 0);
+			if (!hasText) {
+				errors.push(`${mode.label}: add at least one phrase with text.`);
+			}
+			s.phrases.forEach((p, i) => {
+				const textTrimmed = (p.fieldText || '').trim();
+				if (textTrimmed.length === 0) {
+					errors.push(`${mode.label}: phrase #${i + 1} is missing text.`);
+				}
+				if (!Number.isFinite(p.delay) || p.delay < 0) {
+					errors.push(`${mode.label}: phrase #${i + 1} duration must be 0 or more.`);
+				}
+			});
+		});
+		return errors;
+	}
+
+	function buildJsonObject() {
+		const out = {};
+		MODES.forEach(mode => {
+			const s = state[mode.key];
+			const phrases = s.phrases
+				.filter(p => p.fieldText && p.fieldText.trim().length > 0)
+				.map(p => ({ delay: p.delay, field_text: p.fieldText }));
+			out[mode.key] = {
+				start_speaking_message_delay: s.startSpeakingMessageDelay,
+				listening_message_delay: s.listeningMessageDelay,
+				phrases: phrases,
+			};
+		});
+		return out;
+	}
+
+	function refresh() {
+		const errors = validate();
+		if (errors.length > 0) {
+			errorsList.innerHTML = '';
+			errors.forEach(e => errorsList.appendChild(el('li', {}, [document.createTextNode(e)])));
+			errorsContainer.classList.remove('hidden');
+			outputPanel.classList.add('hidden');
+			return;
+		}
+		errorsContainer.classList.add('hidden');
+		outputPanel.classList.remove('hidden');
+		jsonOutput.value = JSON.stringify(buildJsonObject(), null, 2);
+	}
+
+	function showStatus(text, isError) {
+		const node = document.getElementById('output-status');
+		node.textContent = text;
+		node.classList.toggle('error', !!isError);
+		node.classList.add('visible');
+		clearTimeout(node._timer);
+		node._timer = setTimeout(() => node.classList.remove('visible'), 2500);
+	}
+
+	async function copyText(text) {
+		try {
+			await navigator.clipboard.writeText(text);
+			showStatus('Copied', false);
+		} catch (e) {
+			showStatus('Copy failed', true);
+		}
+	}
+
+	document.getElementById('copy-json').addEventListener('click', () => {
+		copyText(jsonOutput.value);
+	});
+
+	document.getElementById('copy-link').addEventListener('click', () => {
+		const json = JSON.stringify(buildJsonObject());
+		const flavor = encodeURIComponent(state.language);
+		const url = `https://desh.app/${flavor}/appconfig?${CONFIG_KEY}=${encodeURIComponent(json)}`;
+		copyText(url);
+	});
+
+	(function prefillLanguage() {
+		const params = new URLSearchParams(window.location.search);
+		const lang = params.get('language');
+		if (lang && LANGUAGES.includes(lang)) {
+			state.language = lang;
+		}
+	})();
+
+	populateLanguages();
+	if (state.language) languageSelect.value = state.language;
+	render();
+</script>
+</body>
+</html>
