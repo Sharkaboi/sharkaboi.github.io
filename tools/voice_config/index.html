@@ -51,6 +51,75 @@
 			font-weight: 600;
 		}
 
+		.panel-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 8px;
+			margin-bottom: 8px;
+		}
+
+		.panel-header h2 { margin: 0; }
+
+		button.settings-icon {
+			background: transparent;
+			color: var(--muted);
+			border: none;
+			padding: 4px;
+			border-radius: 6px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+		}
+
+		button.settings-icon svg {
+			display: block;
+			width: 20px;
+			height: 20px;
+		}
+
+		button.settings-icon:hover {
+			background: var(--subtle);
+			color: var(--text);
+		}
+
+		.modal-backdrop {
+			position: fixed;
+			inset: 0;
+			background: rgba(0, 0, 0, 0.4);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 100;
+			padding: 16px;
+		}
+
+		.modal {
+			background: var(--panel);
+			border: 1px solid var(--border);
+			border-radius: 8px;
+			padding: 20px;
+			width: 100%;
+			max-width: 420px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+		}
+
+		.modal h3 {
+			margin: 0 0 12px 0;
+			font-size: 16px;
+			font-weight: 600;
+		}
+
+		.modal-field { margin-bottom: 12px; }
+
+		.modal-actions {
+			display: flex;
+			justify-content: flex-end;
+			gap: 8px;
+			margin-top: 16px;
+		}
+
 		.panel-hint {
 			font-size: 12px;
 			color: var(--muted);
@@ -83,6 +152,8 @@
 			background: #fff;
 			color: var(--text);
 		}
+
+		select { padding-right: 32px; }
 
 		textarea {
 			resize: vertical;
@@ -256,12 +327,31 @@
 		<ul id="errors-list"></ul>
 	</div>
 
+	<div id="settings-modal" class="modal-backdrop hidden">
+		<div class="modal" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+			<h3 id="settings-title">Settings</h3>
+			<div class="modal-field">
+				<label for="settings-start-speaking">Start-speaking message delay (ms)</label>
+				<input id="settings-start-speaking" type="number" min="0">
+			</div>
+			<div class="modal-field">
+				<label for="settings-listening">Listening message delay (ms)</label>
+				<input id="settings-listening" type="number" min="0">
+			</div>
+			<div class="modal-actions">
+				<button class="secondary" id="settings-cancel">Cancel</button>
+				<button id="settings-ok">OK</button>
+			</div>
+		</div>
+	</div>
+
 	<div id="output-panel" class="panel hidden">
 		<h2>Generated config</h2>
 		<textarea id="json-output" rows="14" readonly></textarea>
 		<div class="actions">
 			<button class="secondary" id="copy-json">Copy JSON</button>
-			<button id="copy-link">Copy appconfig link</button>
+			<button class="secondary" id="copy-link">Copy appconfig link</button>
+			<button id="set-appconfig">Set to appconfig</button>
 			<span class="status" id="output-status"></span>
 		</div>
 	</div>
@@ -272,6 +362,7 @@
 	const DEFAULT_LISTENING_MESSAGE_DELAY = 600;
 	const DEFAULT_PHRASE_DELAY = 1000;
 	const CONFIG_KEY = 'dummy_voice_config_json';
+	const STATE_STORAGE_KEY = 'dummy_voice_config_state';
 
 	const MODES = [
 		{ key: 'native', label: 'Native' },
@@ -324,32 +415,30 @@
 	}
 
 	function renderMode(mode) {
-		const s = state[mode.key];
 		const panel = el('div', { class: 'panel' });
-		panel.appendChild(el('h2', {}, [document.createTextNode(mode.label)]));
 
-		const fieldRow = el('div', { class: 'field-row' });
-		fieldRow.appendChild(numberField(
-			'Start-speaking message delay (ms)',
-			s.startSpeakingMessageDelay,
-			DEFAULT_START_SPEAKING_MESSAGE_DELAY,
-			v => { s.startSpeakingMessageDelay = v; refresh(); }
-		));
-		fieldRow.appendChild(numberField(
-			'Listening message delay (ms)',
-			s.listeningMessageDelay,
-			DEFAULT_LISTENING_MESSAGE_DELAY,
-			v => { s.listeningMessageDelay = v; refresh(); }
-		));
-		panel.appendChild(fieldRow);
+		const header = el('div', { class: 'panel-header' });
+		header.appendChild(el('h2', {}, [document.createTextNode(mode.label)]));
+		const settingsBtn = el('button', {
+			class: 'settings-icon',
+			type: 'button',
+			title: 'Delay settings',
+			'aria-label': `${mode.label} delay settings`,
+		}, []);
+		settingsBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94 0 .31.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>';
+		settingsBtn.addEventListener('click', () => openSettingsDialog(mode));
+		header.appendChild(settingsBtn);
+		panel.appendChild(header);
+
+		const s = state[mode.key];
 
 		panel.appendChild(el('div', { class: 'phrases-subtitle' }, [document.createTextNode('Phrases')]));
 
-		const header = el('div', { class: 'phrase-header' });
-		header.appendChild(el('span', {}, [document.createTextNode('Duration (ms)')]));
-		header.appendChild(el('span', {}, [document.createTextNode('Text')]));
-		header.appendChild(el('span', {}, []));
-		panel.appendChild(header);
+		const phraseHeader = el('div', { class: 'phrase-header' });
+		phraseHeader.appendChild(el('span', {}, [document.createTextNode('Duration (ms)')]));
+		phraseHeader.appendChild(el('span', {}, [document.createTextNode('Text')]));
+		phraseHeader.appendChild(el('span', {}, []));
+		panel.appendChild(phraseHeader);
 
 		const list = el('div', {});
 		s.phrases.forEach((_, i) => list.appendChild(renderPhraseRow(mode.key, i)));
@@ -409,16 +498,88 @@
 		return row;
 	}
 
-	function numberField(labelText, value, defaultValue, onChange) {
-		const wrap = el('div', {});
-		wrap.appendChild(el('label', {}, [document.createTextNode(labelText)]));
-		const input = el('input', { type: 'number', min: '0', value: String(value) });
-		input.addEventListener('input', () => {
-			const v = parseInt(input.value, 10);
-			onChange(Number.isFinite(v) ? v : NaN);
+	const settingsModal = document.getElementById('settings-modal');
+	const settingsTitle = document.getElementById('settings-title');
+	const settingsStartSpeakingInput = document.getElementById('settings-start-speaking');
+	const settingsListeningInput = document.getElementById('settings-listening');
+	let settingsModeKey = null;
+
+	function openSettingsDialog(mode) {
+		settingsModeKey = mode.key;
+		const s = state[mode.key];
+		settingsTitle.textContent = `${mode.label} delay settings`;
+		settingsStartSpeakingInput.value = Number.isFinite(s.startSpeakingMessageDelay) ? String(s.startSpeakingMessageDelay) : '';
+		settingsListeningInput.value = Number.isFinite(s.listeningMessageDelay) ? String(s.listeningMessageDelay) : '';
+		settingsModal.classList.remove('hidden');
+		settingsStartSpeakingInput.focus();
+	}
+
+	function closeSettingsDialog() {
+		settingsModal.classList.add('hidden');
+		settingsModeKey = null;
+	}
+
+	function applySettingsDialog() {
+		if (!settingsModeKey) return;
+		const s = state[settingsModeKey];
+		const startV = parseInt(settingsStartSpeakingInput.value, 10);
+		const listenV = parseInt(settingsListeningInput.value, 10);
+		s.startSpeakingMessageDelay = Number.isFinite(startV) ? startV : NaN;
+		s.listeningMessageDelay = Number.isFinite(listenV) ? listenV : NaN;
+		closeSettingsDialog();
+		refresh();
+	}
+
+	document.getElementById('settings-ok').addEventListener('click', applySettingsDialog);
+	document.getElementById('settings-cancel').addEventListener('click', closeSettingsDialog);
+	settingsModal.addEventListener('click', (e) => {
+		if (e.target === settingsModal) closeSettingsDialog();
+	});
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape' && !settingsModal.classList.contains('hidden')) closeSettingsDialog();
+	});
+
+	function saveState() {
+		try {
+			localStorage.setItem(STATE_STORAGE_KEY, JSON.stringify(state));
+		} catch (e) {
+			// Storage unavailable or quota exceeded — skip.
+		}
+	}
+
+	function loadState() {
+		let parsed;
+		try {
+			const raw = localStorage.getItem(STATE_STORAGE_KEY);
+			if (!raw) return false;
+			parsed = JSON.parse(raw);
+		} catch (e) {
+			return false;
+		}
+		if (!parsed || typeof parsed !== 'object') return false;
+		if (typeof parsed.language !== 'string' || !LANGUAGES.includes(parsed.language)) return false;
+		for (const mode of MODES) {
+			const m = parsed[mode.key];
+			if (!m || typeof m !== 'object') return false;
+			if (typeof m.startSpeakingMessageDelay !== 'number') return false;
+			if (typeof m.listeningMessageDelay !== 'number') return false;
+			if (!Array.isArray(m.phrases) || m.phrases.length === 0) return false;
+			for (const p of m.phrases) {
+				if (!p || typeof p !== 'object') return false;
+				if (typeof p.delay !== 'number') return false;
+				if (typeof p.fieldText !== 'string') return false;
+			}
+		}
+		state.language = parsed.language;
+		MODES.forEach(mode => {
+			const m = parsed[mode.key];
+			state[mode.key] = {
+				startSpeakingMessageDelay: m.startSpeakingMessageDelay,
+				listeningMessageDelay: m.listeningMessageDelay,
+				phrases: m.phrases.map(p => ({ delay: p.delay, fieldText: p.fieldText })),
+			};
 		});
-		wrap.appendChild(input);
-		return wrap;
+		return true;
 	}
 
 	function el(tag, attrs, children) {
@@ -477,6 +638,7 @@
 	}
 
 	function refresh() {
+		saveState();
 		const errors = validate();
 		if (errors.length > 0) {
 			errorsList.innerHTML = '';
@@ -512,12 +674,21 @@
 		copyText(jsonOutput.value);
 	});
 
-	document.getElementById('copy-link').addEventListener('click', () => {
+	function buildAppConfigUrl() {
 		const json = JSON.stringify(buildJsonObject());
 		const flavor = encodeURIComponent(state.language);
-		const url = `https://desh.app/${flavor}/appconfig?${CONFIG_KEY}=${encodeURIComponent(json)}`;
-		copyText(url);
+		return `https://desh.app/${flavor}/appconfig?${CONFIG_KEY}=${encodeURIComponent(json)}`;
+	}
+
+	document.getElementById('copy-link').addEventListener('click', () => {
+		copyText(buildAppConfigUrl());
 	});
+
+	document.getElementById('set-appconfig').addEventListener('click', () => {
+		window.open(buildAppConfigUrl(), '_blank', 'noopener');
+	});
+
+	loadState();
 
 	(function prefillLanguage() {
 		const params = new URLSearchParams(window.location.search);
