@@ -149,6 +149,12 @@ input:focus, textarea:focus, select:focus {
 	margin: 8px 0 2px 0;
 }
 
+.phrase-hint {
+	font-size: 12px;
+	color: var(--muted);
+	margin-bottom: 8px;
+}
+
 .phrase-header {
 	display: grid;
 	grid-template-columns: 160px 1fr 36px;
@@ -169,11 +175,21 @@ input:focus, textarea:focus, select:focus {
 	display: grid;
 	grid-template-columns: 160px 1fr 36px;
 	gap: 8px;
-	margin-bottom: 8px;
+	margin-bottom: 2px;
 	align-items: start;
 }
 
 .phrase-row input { font-size: 13px; }
+
+/* Shows the accumulated field text this row produces, aligned under the text
+   input (160px duration column + 8px grid gap). */
+.phrase-preview {
+	font-size: 11px;
+	color: var(--muted);
+	margin: 0 0 8px 168px;
+	min-height: 16px;
+	overflow-wrap: anywhere;
+}
 
 button {
 	padding: 8px 14px;

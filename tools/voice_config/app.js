@@ -10,7 +10,8 @@
 	const APPCONFIG_QUERY_KEY = 'dummy_voice_config_json';
 	const STATE_STORAGE_KEY = 'dummy_voice_config_state';
 	const LANGUAGE_STORAGE_KEY = 'dummy_voice_config_language';
-	const STATE_VERSION = 2;
+	const STATE_VERSION = 3;
+	const DEFAULT_PHRASE_COUNT = 2;
 
 	const MODES = [
 		{ key: 'native', label: 'Native' },
@@ -28,11 +29,15 @@
 
 	// --- State ---
 
+	function makeDefaultPhrase() {
+		return { delay: DEFAULT_PHRASE_DELAY, textChunk: '' };
+	}
+
 	function makeDefaultModeState() {
 		return {
 			startSpeakingMessageDelay: DEFAULT_START_SPEAKING_MESSAGE_DELAY,
 			listeningMessageDelay: DEFAULT_LISTENING_MESSAGE_DELAY,
-			phrases: [{ delay: DEFAULT_PHRASE_DELAY, fieldText: '' }],
+			phrases: Array.from({ length: DEFAULT_PHRASE_COUNT }, makeDefaultPhrase),
 		};
 	}
 
@@ -83,6 +88,28 @@
 	const MIGRATIONS = {
 		// v1 kept `language` inside the state blob; v2 stores it separately.
 		1: (s) => { const { language: _, ...rest } = s; return rest; },
+		// v2 stored each phrase's full cumulative field text; v3 stores only the
+		// chunk that phrase adds. Strip the previous phrase's text as a prefix.
+		2: (s) => {
+			const out = { ...s };
+			MODES.forEach(mode => {
+				const m = out[mode.key];
+				if (!m || !Array.isArray(m.phrases)) return;
+				let prevFull = '';
+				out[mode.key] = {
+					...m,
+					phrases: m.phrases.map(p => {
+						const full = typeof p.fieldText === 'string' ? p.fieldText : '';
+						const chunk = prevFull && full.startsWith(prevFull)
+							? full.slice(prevFull.length).trim()
+							: full.trim();
+						prevFull = full;
+						return { delay: p.delay, textChunk: chunk };
+					}),
+				};
+			});
+			return out;
+		},
 	};
 
 	function migrate(raw) {
@@ -109,7 +136,7 @@
 			for (const p of m.phrases) {
 				if (!p || typeof p !== 'object') return false;
 				if (typeof p.delay !== 'number') return false;
-				if (typeof p.fieldText !== 'string') return false;
+				if (typeof p.textChunk !== 'string') return false;
 			}
 		}
 		return true;
@@ -145,7 +172,7 @@
 			state[mode.key] = {
 				startSpeakingMessageDelay: m.startSpeakingMessageDelay,
 				listeningMessageDelay: m.listeningMessageDelay,
-				phrases: m.phrases.map(p => ({ delay: p.delay, fieldText: p.fieldText })),
+				phrases: m.phrases.map(p => ({ delay: p.delay, textChunk: p.textChunk })),
 			};
 		});
 	}
@@ -167,6 +194,21 @@
 		}
 	}
 
+	// --- Accumulation ---
+
+	// A row holds only the chunk it adds ("are"), while the config needs the full
+	// field text at that point ("how are"), so chunks accumulate left to right.
+	// Blank rows are ignored: they emit no phrase and don't advance the text.
+	function accumulate(phrases) {
+		let acc = '';
+		return phrases.map(p => {
+			const chunk = (p.textChunk || '').trim();
+			if (!chunk) return { phrase: p, fullText: null };
+			acc = acc ? `${acc} ${chunk}` : chunk;
+			return { phrase: p, fullText: acc };
+		});
+	}
+
 	// --- Validation ---
 
 	function validate() {
@@ -179,11 +221,9 @@
 			if (!Number.isFinite(s.listeningMessageDelay) || s.listeningMessageDelay < 0) {
 				errors.push(`${mode.label}: listening message delay must be 0 or more.`);
 			}
-			s.phrases.forEach((p, i) => {
-				if (!p.fieldText || p.fieldText.trim().length === 0) {
-					errors.push(`${mode.label}: phrase #${i + 1} text cannot be empty.`);
-				}
-				if (!Number.isFinite(p.delay) || p.delay < 0) {
+			accumulate(s.phrases).forEach((entry, i) => {
+				if (entry.fullText === null) return;
+				if (!Number.isFinite(entry.phrase.delay) || entry.phrase.delay < 0) {
 					errors.push(`${mode.label}: phrase #${i + 1} duration must be 0 or more.`);
 				}
 			});
@@ -200,7 +240,9 @@
 			out[mode.key] = {
 				start_speaking_message_delay: s.startSpeakingMessageDelay,
 				listening_message_delay: s.listeningMessageDelay,
-				phrases: s.phrases.map(p => ({ delay: p.delay, field_text: p.fieldText })),
+				phrases: accumulate(s.phrases)
+					.filter(entry => entry.fullText !== null)
+					.map(entry => ({ delay: entry.phrase.delay, field_text: entry.fullText })),
 			};
 		});
 		return out;
@@ -238,9 +280,12 @@
 		]));
 
 		panel.appendChild(el('div', { class: 'phrases-subtitle' }, ['Phrases']));
+		panel.appendChild(el('div', { class: 'phrase-hint' }, [
+			'Type only the new words each phrase adds — they build on the rows above. Blank rows are ignored.',
+		]));
 		panel.appendChild(el('div', { class: 'phrase-header' }, [
 			el('span', {}, ['Duration (ms)']),
-			el('span', {}, ['Text']),
+			el('span', {}, ['Adds text']),
 			el('span', {}, []),
 		]));
 
@@ -250,7 +295,7 @@
 
 		const addBtn = el('button', { class: 'add-btn', type: 'button' }, ['+ Add phrase']);
 		addBtn.addEventListener('click', () => {
-			const p = { delay: DEFAULT_PHRASE_DELAY, fieldText: '' };
+			const p = makeDefaultPhrase();
 			s.phrases.push(p);
 			list.appendChild(renderPhraseRow(mode.key, p));
 			refresh();
@@ -260,8 +305,13 @@
 		return panel;
 	}
 
+	// Preview nodes are keyed off the phrase objects so refresh() can restate every
+	// cumulative text after any edit, without keeping DOM refs on the saved state.
+	const previewNodes = new WeakMap();
+
 	function renderPhraseRow(modeKey, p) {
 		const s = state[modeKey];
+		const item = el('div', { class: 'phrase-item' });
 		const row = el('div', { class: 'phrase-row' });
 
 		const delayInput = el('input', {
@@ -279,12 +329,12 @@
 
 		const textInput = el('input', {
 			type: 'text',
-			value: p.fieldText,
-			placeholder: 'What appears in the text field',
-			title: 'Text that appears as a partial result',
+			value: p.textChunk,
+			placeholder: 'Only the words this phrase adds',
+			title: 'Words this phrase adds on top of the previous phrases',
 		});
 		textInput.addEventListener('input', () => {
-			p.fieldText = textInput.value;
+			p.textChunk = textInput.value;
 			refresh();
 		});
 		row.appendChild(textInput);
@@ -294,22 +344,38 @@
 			if (s.phrases.length === 1) {
 				// Always keep at least one phrase row — reset in place instead of deleting.
 				p.delay = DEFAULT_PHRASE_DELAY;
-				p.fieldText = '';
+				p.textChunk = '';
 				delayInput.value = String(DEFAULT_PHRASE_DELAY);
 				textInput.value = '';
 			} else {
 				const idx = s.phrases.indexOf(p);
 				if (idx >= 0) s.phrases.splice(idx, 1);
-				row.remove();
+				item.remove();
 			}
 			refresh();
 		});
 		row.appendChild(removeBtn);
 
-		return row;
+		const preview = el('div', { class: 'phrase-preview' }, []);
+		previewNodes.set(p, preview);
+
+		item.appendChild(row);
+		item.appendChild(preview);
+		return item;
+	}
+
+	function updatePreviews() {
+		MODES.forEach(mode => {
+			accumulate(state[mode.key].phrases).forEach(entry => {
+				const node = previewNodes.get(entry.phrase);
+				if (!node) return;
+				node.textContent = entry.fullText === null ? '' : `→ ${entry.fullText}`;
+			});
+		});
 	}
 
 	function refresh() {
+		updatePreviews();
 		saveState();
 		const errors = validate();
 		if (errors.length > 0) {
